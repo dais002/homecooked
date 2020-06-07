@@ -38,7 +38,7 @@ class CreateInitialTables extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('price');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('limit');
             $table->foreignId('store_id')
                 ->constrained()
@@ -49,10 +49,11 @@ class CreateInitialTables extends Migration
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('logo');
+            $table->string('logo')->nullable();
             $table->foreignId('cuisine_id')
                 ->constrained()
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->nullable();
             $table->timestamps();
         });
 
@@ -73,7 +74,7 @@ class CreateInitialTables extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->string('address_1');
-            $table->string('address_2');
+            $table->string('address_2')->nullable();
             $table->string('city');
             $table->string('state');
             $table->string('zip_code');
