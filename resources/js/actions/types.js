@@ -1,0 +1,6 @@
+export const SELECT_STORE = "SELECT_STORE";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const RESET_INSTORE = "RESET_INSTORE";
+export const INCREMENT_ITEM = "INCREMENT_ITEM";
+export const DECREMENT_ITEM = "DECREMENT_ITEM";
+export const REMOVE_ITEM = "REMOVE_ITEM";

@@ -1,0 +1,727 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  font-family: "Chelsea Market";
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.App {
+  margin: 0 auto;
+}
+
+.ticker {
+  background-color: rgba(255, 165, 0, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 32px;
+}
+
+button {
+  font-family: "Chelsea Market";
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+select:focus {
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+.footer-space {
+  height: 10vh;
+}
+
+/* --------- navbar --------- */
+header {
+  background-repeat: no-repeat;
+  background-size: 22%;
+  background-position: 50% 26%;
+  background-color: #fff;
+  height: 100px;
+  font-size: 1.2em;
+  position: relative;
+}
+
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: inherit;
+  margin: 0 auto;
+  width: 70%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0px 20px;
+}
+
+.logo {
+  margin: 1px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 5px 0px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.logo-link {
+  border: 2px solid black;
+  border-radius: 1.5em;
+  padding: 8px 15px;
+  width: 100%;
+  margin: 10px 0px;
+  color: black;
+  text-decoration: none;
+}
+
+.logo-link:hover {
+  border: 4px solid royalblue;
+}
+
+.navright {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  list-style-type: none;
+  margin: 0;
+  padding: 0px;
+  overflow: hidden;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+li {
+  padding: 15px;
+  margin: 0;
+}
+
+.navlinks {
+  text-decoration: none;
+  color: black;
+}
+
+.about {
+  border-bottom: 3px solid black;
+}
+
+.about:hover {
+  color: blue;
+  font-weight: bold;
+}
+
+.cart {
+  border: 3px solid darkblue;
+  border-radius: 1.2em;
+  padding: 12px;
+  cursor: pointer;
+  color: #fff;
+  background-color: royalblue;
+}
+
+.cart:hover {
+  color: black;
+  background-color: white;
+}
+
+.cart ion-icon {
+  vertical-align: middle;
+  font-size: 1.5em;
+}
+
+.search-bar {
+  max-width: 1200px;
+  color: lightgrey;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.search-bar-input {
+  width: 50%;
+  border: 1px solid white;
+  border-radius: 0.4em;
+  padding: 4px 10px;
+  margin: 0px 10px;
+  font-size: 0.9em;
+}
+
+.break-container {
+  padding: 0.8%;
+  height: 60px;
+  text-align: center;
+  font-size: 1.2em;
+  background-color: black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.break-container h2 {
+  color: darkgrey;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.break-container-light {
+  background-color: black;
+  display: block;
+  padding: 0.8%;
+  height: 60px;
+  text-align: center;
+  font-size: 1.2em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.break-container-light h2 {
+  color: white;
+}
+
+.stores-container {
+  max-width: 1100px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 3%;
+  margin: 20px auto;
+}
+
+.stores-container button {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+  width: 100%;
+  margin: 0 auto;
+  border: 0;
+  border: 3px solid black;
+  cursor: pointer;
+  font-family: "Chelsea Market";
+  color: black;
+  border-radius: 3em;
+}
+
+.stores-container button .store-text {
+  padding-bottom: 5px;
+}
+
+.stores-container .store-cards {
+  width: 100%;
+  margin: 0;
+  border-radius: 2em;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+img {
+  height: 300px;
+  max-width: 300px;
+  border-radius: 3em;
+  -o-object-fit: cover;
+     object-fit: cover;
+  padding: 10px 10px 5px 10px;
+}
+
+.vendor-container {
+  text-align: center;
+}
+
+.vendor-container .vendor-img {
+  -webkit-animation: drop 1.5s ease;
+          animation: drop 1.5s ease;
+  padding: 10px;
+  margin: 10px 0px;
+  height: 180px;
+  width: 180px;
+  border: 5px solid rgba(0, 0, 0, 0.8);
+}
+
+.vendor-header h1 {
+  margin: 10px 0px;
+}
+
+@-webkit-keyframes drop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-80px);
+            transform: translateY(-80px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes drop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-80px);
+            transform: translateY(-80px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+.store-item {
+  display: -ms-grid;
+  display: grid;
+  text-align: left;
+  max-width: 900px;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
+  grid-gap: 2em;
+  padding: 25px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: 1px dashed black;
+  border-radius: 3em;
+  margin-bottom: 1em;
+}
+
+.store-item-details {
+  margin: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 5fr 2fr;
+      grid-template-rows: 5fr 2fr;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
+  gap: 1.5em;
+  padding: 2px;
+}
+
+.item-availability,
+.item-price,
+.item-purchase {
+  margin: 0;
+}
+
+.item-detail {
+  margin: 0;
+}
+
+.item-detail h3 {
+  text-decoration: underline;
+}
+
+.item-detail h4 {
+  text-decoration: underline;
+}
+
+.item-availability {
+  margin: 0;
+}
+
+.item-purchase .quantity {
+  margin-bottom: 6px;
+}
+
+.item-purchase .quantity select {
+  font-size: 1.05em;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.item-purchase button {
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.item-image {
+  width: 250px;
+  height: 250px;
+}
+
+.item-image img {
+  width: inherit;
+  height: inherit;
+  padding: 0;
+  border: 1px solid grey;
+}
+
+.add-cart button {
+  font-size: 1.1em;
+  border-radius: 3em;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid black;
+}
+
+.checkout-btn {
+  padding: 15px;
+  text-decoration: none;
+  background-color: royalblue;
+  border: 2px solid black;
+  border-radius: 2em;
+}
+
+.checkout-link {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5em;
+  font-family: "Chelsea Market";
+}
+
+.cart-container {
+  margin: 1%;
+}
+
+.cart-display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0% 10%;
+}
+
+.cart-item-list {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  margin: 0;
+  padding: 20px;
+}
+
+.cart-headers,
+.product-container {
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px dotted black;
+}
+
+.cart-headers {
+  padding-bottom: 5px;
+  border-bottom: 2px solid black;
+}
+
+.cart-totals-container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.cart-totals {
+  position: fixed;
+  border: 4px solid lightgrey;
+  border-radius: 2em;
+  padding: 25px 35px 25px 35px;
+}
+
+.order-summary {
+  border-bottom: 4px solid black;
+}
+
+.order-summary h2 {
+  padding-bottom: 5px;
+}
+
+.order-calculations {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 60% 40%;
+      grid-template-columns: 60% 40%;
+}
+
+.cart-item-name,
+.product-name {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+.cart-item-price, .cart-item-quantity, .cart-item-total,
+.product-price,
+.product-quantity,
+.product-total {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.cart-subtotal,
+.cart-labels {
+  margin: 0;
+  text-align: left;
+}
+
+.cart-subtotal-fee,
+.cart-labels-fee {
+  border-bottom: 2px solid black;
+}
+
+.cart-subtotal h3,
+.cart-subtotal h4,
+.cart-labels h3,
+.cart-labels h4 {
+  padding: 3px 17px 6px 6px;
+}
+
+.cart-fee {
+  border-bottom: 2px solid black;
+}
+
+.cart-total-price,
+.cart-labels-total {
+  border-bottom: 3px solid black;
+}
+
+.product-name {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 2fr;
+      grid-template-columns: 3fr 2fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 0px;
+  margin: 10px;
+}
+
+.product-name img {
+  width: 180px;
+  height: 180px;
+  padding: 0;
+  margin: 0;
+  border: 2px solid black;
+}
+
+.product-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  height: 100%;
+}
+
+.product-text button {
+  padding: 5px 8px;
+  border-radius: 2em;
+  border: 1px solid black;
+}
+
+.product-quantity {
+  margin-top: 2em;
+}
+
+.product-quantity h3 {
+  display: inline;
+}
+
+.product-quantity ion-icon {
+  font-size: 1.4em;
+  vertical-align: top;
+}
+
+.product-quantity ion-icon:hover {
+  cursor: pointer;
+}
+
+.product-quantity p {
+  margin-top: 1em;
+}
+
+.complete-order {
+  margin: 20px 0px;
+  text-align: center;
+}
+
+.complete-order button {
+  margin: 0 auto;
+  font-size: 1.2em;
+  padding: 15px;
+  border: 3px solid black;
+  border-radius: 3em;
+}
+
+.complete-order button:hover {
+  background-color: green;
+  color: whitesmoke;
+}
+
+.customer-container {
+  max-width: 1000px;
+  margin: 0% 31% 0% 9%;
+}
+
+.customer-form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 200px 2fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 200px 2fr;
+  margin: 10px auto;
+  width: 550px;
+  height: 500px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.customer-form label {
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.customer-form input {
+  font-size: 1.1em;
+  padding: 4px 10px 4px 12px;
+  border-radius: 1.5em;
+  border: 1px solid darkgrey;
+  margin: 0 0 0 10px;
+}
+
+.customer-form select {
+  width: 40%;
+  margin: 0 0 0 10px;
+  padding: 1% 4% 1% 6%;
+  font-size: 1.05em;
+  border-radius: 2em;
+}
+
+.customer-form .comments-box {
+  -ms-grid-row: 6;
+  -ms-grid-row-span: 1;
+  grid-row: 6 / 7;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+  width: 90%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 1.5em;
+  height: 180px;
+  padding: 10px 16px;
+  margin: 20px auto 0 auto;
+  font-size: 1.05em;
+}
+
+.customer-form .complete-order {
+  -ms-grid-row: 7;
+  -ms-grid-row-span: 1;
+  grid-row: 7 / 8;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px;
+  border: 2px solid grey;
+}
+
+.customer-form .complete-order:hover {
+  cursor: pointer;
+  border: 3px solid black;
+  background-color: royalblue;
+  color: white;
+  font-size: 1.3em;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+.modal-box-delete {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 2px solid black;
+  width: 50%;
+  text-align: center;
+}
+
+.modal-box-delete .remove-item {
+  color: rgba(255, 0, 0, 0.7);
+}
+
+.delete-item-btns {
+  margin: 10px;
+}
+
+.delete-item-btns button {
+  padding: 5px 15px;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 1em;
+}
+
+.delete-item-btns button:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+h1 {
+  color: blue;
+  font-size: 10em;
+}
+/*# sourceMappingURL=app.css.map */

@@ -13,23 +13,28 @@ class CreateInitialTables extends Migration
      */
     public function up()
     {
-        Schema::create('item_order', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('order_id')
-                ->constrained()
-                ->onDelete('cascade');
-            $table->foreignId('item_id')
-                ->constrained()
-                ->onDelete('cascade');
-            $table->integer('quantity');
-            $table->timestamps();
-        });
-
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        Schema::create('cuisines', function (Blueprint $table) {
+            $table->id();
+            $table->string('type');
+            $table->timestamps();
+        });
+
+        Schema::create('stores', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('logo')->nullable();
+            $table->foreignId('cuisine_id')
+                ->constrained()
+                ->onDelete('cascade')
+                ->nullable();
             $table->timestamps();
         });
 
@@ -46,22 +51,18 @@ class CreateInitialTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('stores', function (Blueprint $table) {
+        Schema::create('item_order', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('logo')->nullable();
-            $table->foreignId('cuisine_id')
+            $table->foreignId('order_id')
                 ->constrained()
-                ->onDelete('cascade')
-                ->nullable();
+                ->onDelete('cascade');
+            $table->foreignId('item_id')
+                ->constrained()
+                ->onDelete('cascade');
+            $table->integer('quantity');
             $table->timestamps();
         });
 
-        Schema::create('cuisines', function (Blueprint $table) {
-            $table->id();
-            $table->string('type');
-            $table->timestamps();
-        });
 
         Schema::create('phone_numbers', function (Blueprint $table) {
             $table->id();
