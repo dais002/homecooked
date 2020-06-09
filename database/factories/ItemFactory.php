@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Item::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->userName,
         'description' => $faker->sentence,
         'price' => $faker->numberBetween($min = 500, $max = 20000),
         'image' => $faker->imageUrl($width = 200, $height = 200),

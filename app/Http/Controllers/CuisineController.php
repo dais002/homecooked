@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Cuisine;
 use App\Http\Requests\CuisineRequest;
 use App\Http\Resources\CuisineResource;
-use Illuminate\Http\Request;
 
 class CuisineController extends Controller
 {

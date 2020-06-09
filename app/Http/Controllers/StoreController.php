@@ -19,9 +19,6 @@ class StoreController extends Controller
 
     public function store(StoreRequest $request)
     {
-        // not sure why this isn't working either...
-        // tested a post request to items, it works
-        // post request here keeps getting server error....
         $store = Store::create($request->validated());
         return $store;
     }
@@ -34,7 +31,6 @@ class StoreController extends Controller
 
     public function update(StoreRequest $request, $id)
     {
-        // same issue.... doesn't work....
         $store = Store::find($id)->update($request->validated());
         return $store;
     }

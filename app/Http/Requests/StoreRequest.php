@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['string', 'unique', 'max:255', 'required'],
+            'name' => ['string', 'max:255', 'required'],
             'logo' => ['string', 'max:255'],
             'cuisine_id' => ['integer'],
         ];
