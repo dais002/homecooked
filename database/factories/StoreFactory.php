@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Store::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'cuisine_id' => 1,
+        'logo' => $faker->imageUrl($width = 200, $height = 200),
+        'cuisine_id' => $faker->randomDigitNot(0)
     ];
 });

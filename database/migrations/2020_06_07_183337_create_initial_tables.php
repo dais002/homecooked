@@ -41,7 +41,7 @@ class CreateInitialTables extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->string('description')->nullable();
             $table->integer('price');
             $table->string('image')->nullable();
             $table->integer('limit');
@@ -92,6 +92,12 @@ class CreateInitialTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('initial_tables');
+        Schema::dropIfExists('orders');
+        Schema::dropIfExists('cuisines');
+        Schema::dropIfExists('stores');
+        Schema::dropIfExists('items');
+        Schema::dropIfExists('item_order');
+        Schema::dropIfExists('phone_numbers');
+        Schema::dropIfExists('addresses');
     }
 }

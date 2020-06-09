@@ -12,4 +12,9 @@ class Store extends Model
     {
         return $this->belongsTo(Cuisine::class);
     }
+
+    public function item()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

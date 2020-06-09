@@ -15,17 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 // get homepage
-Route::get('/stores', 'StoresController@index')->name('stores.index');
+// Route::get('/stores', 'StoresController@index')->name('stores.index');
 // get store
-Route::get('/stores/{store}', 'StoresController@show')->name('stores.show');
+// Route::get('/stores/{store}', 'StoresController@show')->name('stores.show');
 
-// cuisines routes
-Route::get('/cuisines', "CuisinesController@index");
-Route::get('/cuisines/{cuisine}', "CuisinesController@show");
-Route::post('/cuisines', "CuisinesController@store");
-Route::put('/cuisines/{cuisine}', "CuisinesController@update");
-Route::delete('/cuisines/{cuisine}', "CuisinesController@delete");
+// // cuisines routes
+// Route::get('/cuisines2', "CuisinesController@index");
+// Route::get('/cuisines2/{cuisine}', "CuisinesController@show");
+// Route::post('/cuisines2', "CuisinesController@store");
+// Route::put('/cuisines2/{cuisine}', "CuisinesController@update");
+// Route::delete('/cuisines2/{cuisine}', "CuisinesController@delete");
 
+Route::apiResource('/cuisines', 'CuisineController');
+Route::apiResource('/stores', 'StoreController');
+Route::apiResource('/items', 'ItemController');
 
 // register a user - built in?
 // logout user - built in?
