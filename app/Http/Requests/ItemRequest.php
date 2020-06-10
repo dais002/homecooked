@@ -29,7 +29,6 @@ class ItemRequest extends FormRequest
             'price' => ['integer', 'required'],
             'image' => ['string', 'max:255'],
             'limit' => ['integer', 'required'],
-            'store_id' => ['integer', 'required'],
         ];
     }
 }

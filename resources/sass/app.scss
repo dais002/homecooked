@@ -8,9 +8,9 @@
 // @import "~bootstrap/scss/bootstrap";
 
 // tailwindcss
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 // boilerplate starter
 html {
@@ -26,619 +26,619 @@ html {
     padding: 0;
 }
 
-.App {
-    margin: 0 auto;
-}
-
-.ticker {
-    background-color: rgba(255, 165, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 32px;
-}
-
-button {
-    font-family: "Chelsea Market";
-    cursor: pointer;
-    &:focus {
-        outline: none;
-    }
-}
-
-textarea:focus {
-    outline: none;
-}
-
-select:focus {
-    outline: none;
-}
-
-input:focus {
-    outline: none;
-}
-
-textarea {
-    resize: none;
-}
-
-.footer-space {
-    height: 10vh;
-}
-
-/* --------- navbar --------- */
-
-header {
-    // background-image: url("./assets/logo.svg");
-    background-repeat: no-repeat;
-    background-size: 22%;
-    background-position: 50% 26%;
-    background-color: #fff;
-    height: 100px;
-    font-size: 1.2em;
-    position: relative;
-}
-
-.navbar {
-    display: flex;
-    height: inherit;
-    margin: 0 auto;
-    width: 70%;
-    align-items: center;
-    padding: 0px 20px;
-}
-
-.logo {
-    margin: 1px;
-    flex: 1;
-    padding: 5px 0px;
-    font-weight: bold;
-    text-align: center;
-    &-link {
-        border: 2px solid black;
-        border-radius: 1.5em;
-        padding: 8px 15px;
-        width: 100%;
-        margin: 10px 0px;
-        color: black;
-        text-decoration: none;
-        &:hover {
-            // background-color: rgba(0, 0, 0, 0.13);
-            border: 4px solid royalblue;
-            // border: none;
-            // color: rgb(94, 95, 99);
-            // background-color: whitesmoke;
-            // background-color: green;
-            // color: lightgrey;
-            // border: 5px solid darkblue;
-        }
-        // background-color: rgba(255, 165, 0, 1);
-    }
-}
-
-.navright {
-    display: flex;
-    flex: 4;
-    list-style-type: none;
-    margin: 0;
-    padding: 0px;
-    overflow: hidden;
-    justify-content: flex-end;
-}
-
-li {
-    padding: 15px;
-    margin: 0;
-}
-
-.navlinks {
-    text-decoration: none;
-    color: black;
-}
-
-.about {
-    border-bottom: 3px solid black;
-    &:hover {
-        // border-bottom: 3px solid red;
-        color: blue;
-        font-weight: bold;
-    }
-}
-
-.cart {
-    border: 3px solid darkblue;
-    // background-color: royalblue;
-    border-radius: 1.2em;
-    padding: 12px;
-    cursor: pointer;
-    color: #fff;
-    background-color: royalblue;
-    &:hover {
-        color: black;
-        background-color: white;
-    }
-    ion-icon {
-        vertical-align: middle;
-        font-size: 1.5em;
-    }
-}
-
-// @media only screen and (max-width: 850px) {
-//   .navbar {
-//     display: block;
-//   }
+// .App {
+//     margin: 0 auto;
 // }
 
-// --------- HOME COMPONENT ---------
+// .ticker {
+//     background-color: rgba(255, 165, 0, 0.7);
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 32px;
+// }
 
-.search-bar {
-    max-width: 1200px;
-    color: lightgrey;
-    align-items: center;
-    text-align: center;
-    &-input {
-        width: 50%;
-        border: 1px solid white;
-        border-radius: 0.4em;
-        padding: 4px 10px;
-        margin: 0px 10px;
-        font-size: 0.9em;
-    }
-}
+// button {
+//     font-family: "Chelsea Market";
+//     cursor: pointer;
+//     &:focus {
+//         outline: none;
+//     }
+// }
 
-.break-container {
-    padding: 0.8%;
-    height: 60px;
-    text-align: center;
-    font-size: 1.2em;
-    background-color: black;
-    align-items: center;
-    h2 {
-        color: darkgrey;
-        margin: 0px;
-        font-weight: bold;
-    }
-    &-light {
-        background-color: black;
-        display: block;
-        padding: 0.8%;
-        height: 60px;
-        text-align: center;
-        font-size: 1.2em;
-        align-items: center;
-        h2 {
-            color: rgba(255, 255, 255, 1);
-        }
-    }
-}
+// textarea:focus {
+//     outline: none;
+// }
 
-.stores-container {
-    max-width: 1100px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3%;
-    margin: 20px auto;
-    button {
-        align-items: center;
-        background-color: white;
-        width: 100%;
-        margin: 0 auto;
-        border: 0;
-        border: 3px solid black;
-        cursor: pointer;
-        font-family: "Chelsea Market";
-        color: black;
-        border-radius: 3em;
-        .store-text {
-            padding-bottom: 5px;
-        }
-    }
-    .store-cards {
-        width: 100%;
-        margin: 0;
-        border-radius: 2em;
-        text-align: center;
-        text-decoration: none;
-        color: black;
-    }
-}
+// select:focus {
+//     outline: none;
+// }
 
-img {
-    height: 300px;
-    max-width: 300px;
-    border-radius: 3em;
-    object-fit: cover;
-    padding: 10px 10px 5px 10px;
-}
+// input:focus {
+//     outline: none;
+// }
 
-// ----------- VENDOR COMPONENT --------------
+// textarea {
+//     resize: none;
+// }
 
-.vendor-container {
-    text-align: center;
-    .vendor-img {
-        animation: drop 1.5s ease;
-        padding: 10px;
-        margin: 10px 0px;
-        height: 180px;
-        width: 180px;
-        border: 5px solid rgba(0, 0, 0, 0.8);
-    }
-}
+// .footer-space {
+//     height: 10vh;
+// }
 
-.vendor-header {
-    h1 {
-        margin: 10px 0px;
-    }
-}
+// /* --------- navbar --------- */
 
-@keyframes drop {
-    0% {
-        opacity: 0;
-        transform: translateY(-80px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
+// header {
+//     // background-image: url("./assets/logo.svg");
+//     background-repeat: no-repeat;
+//     background-size: 22%;
+//     background-position: 50% 26%;
+//     background-color: #fff;
+//     height: 100px;
+//     font-size: 1.2em;
+//     position: relative;
+// }
 
-.store-item {
-    display: grid;
-    text-align: left;
-    max-width: 900px;
-    grid-template-columns: 3fr 1fr;
-    grid-gap: 2em;
-    padding: 25px;
-    justify-content: space-between;
-    border: 1px dashed black;
-    border-radius: 3em;
-    margin-bottom: 1em;
-    &-details {
-        margin: 0;
-        display: grid;
-        grid-template-rows: 5fr 2fr;
-        grid-template-columns: 2fr 1fr;
-        gap: 1.5em;
-        padding: 2px;
-    }
-}
+// .navbar {
+//     display: flex;
+//     height: inherit;
+//     margin: 0 auto;
+//     width: 70%;
+//     align-items: center;
+//     padding: 0px 20px;
+// }
 
-.item-availability,
-.item-price,
-.item-purchase {
-    margin: 0;
-}
+// .logo {
+//     margin: 1px;
+//     flex: 1;
+//     padding: 5px 0px;
+//     font-weight: bold;
+//     text-align: center;
+//     &-link {
+//         border: 2px solid black;
+//         border-radius: 1.5em;
+//         padding: 8px 15px;
+//         width: 100%;
+//         margin: 10px 0px;
+//         color: black;
+//         text-decoration: none;
+//         &:hover {
+//             // background-color: rgba(0, 0, 0, 0.13);
+//             border: 4px solid royalblue;
+//             // border: none;
+//             // color: rgb(94, 95, 99);
+//             // background-color: whitesmoke;
+//             // background-color: green;
+//             // color: lightgrey;
+//             // border: 5px solid darkblue;
+//         }
+//         // background-color: rgba(255, 165, 0, 1);
+//     }
+// }
 
-.item-detail {
-    margin: 0;
-    h3 {
-        text-decoration: underline;
-    }
-    h4 {
-        text-decoration: underline;
-    }
-}
+// .navright {
+//     display: flex;
+//     flex: 4;
+//     list-style-type: none;
+//     margin: 0;
+//     padding: 0px;
+//     overflow: hidden;
+//     justify-content: flex-end;
+// }
 
-.item-availability {
-    margin: 0;
-}
+// li {
+//     padding: 15px;
+//     margin: 0;
+// }
 
-.item-purchase {
-    .quantity {
-        margin-bottom: 6px;
-        select {
-            font-size: 1.05em;
-            border: 1px solid black;
-            cursor: pointer;
-        }
-    }
-    button {
-        padding: 5px 10px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-}
+// .navlinks {
+//     text-decoration: none;
+//     color: black;
+// }
 
-.item-image {
-    width: 250px;
-    height: 250px;
-    img {
-        width: inherit;
-        height: inherit;
-        padding: 0;
-        border: 1px solid grey;
-    }
-}
+// .about {
+//     border-bottom: 3px solid black;
+//     &:hover {
+//         // border-bottom: 3px solid red;
+//         color: blue;
+//         font-weight: bold;
+//     }
+// }
 
-.add-cart {
-    button {
-        font-size: 1.1em;
-        border-radius: 3em;
-        box-shadow: none;
-        border: 1px solid black;
-    }
-}
+// .cart {
+//     border: 3px solid darkblue;
+//     // background-color: royalblue;
+//     border-radius: 1.2em;
+//     padding: 12px;
+//     cursor: pointer;
+//     color: #fff;
+//     background-color: royalblue;
+//     &:hover {
+//         color: black;
+//         background-color: white;
+//     }
+//     ion-icon {
+//         vertical-align: middle;
+//         font-size: 1.5em;
+//     }
+// }
 
-.checkout-btn {
-    padding: 15px;
-    text-decoration: none;
-    background-color: royalblue;
-    border: 2px solid black;
-    border-radius: 2em;
-}
+// // @media only screen and (max-width: 850px) {
+// //   .navbar {
+// //     display: block;
+// //   }
+// // }
 
-.checkout-link {
-    text-decoration: none;
-    color: white;
-    font-size: 1.5em;
-    font-family: "Chelsea Market";
-}
+// // --------- HOME COMPONENT ---------
 
-// ----------- ABOUT COMPONENT -----------------
+// .search-bar {
+//     max-width: 1200px;
+//     color: lightgrey;
+//     align-items: center;
+//     text-align: center;
+//     &-input {
+//         width: 50%;
+//         border: 1px solid white;
+//         border-radius: 0.4em;
+//         padding: 4px 10px;
+//         margin: 0px 10px;
+//         font-size: 0.9em;
+//     }
+// }
 
-// ----------- CART -------------
+// .break-container {
+//     padding: 0.8%;
+//     height: 60px;
+//     text-align: center;
+//     font-size: 1.2em;
+//     background-color: black;
+//     align-items: center;
+//     h2 {
+//         color: darkgrey;
+//         margin: 0px;
+//         font-weight: bold;
+//     }
+//     &-light {
+//         background-color: black;
+//         display: block;
+//         padding: 0.8%;
+//         height: 60px;
+//         text-align: center;
+//         font-size: 1.2em;
+//         align-items: center;
+//         h2 {
+//             color: rgba(255, 255, 255, 1);
+//         }
+//     }
+// }
 
-.cart-container {
-    margin: 1%;
-}
+// .stores-container {
+//     max-width: 1100px;
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+//     gap: 3%;
+//     margin: 20px auto;
+//     button {
+//         align-items: center;
+//         background-color: white;
+//         width: 100%;
+//         margin: 0 auto;
+//         border: 0;
+//         border: 3px solid black;
+//         cursor: pointer;
+//         font-family: "Chelsea Market";
+//         color: black;
+//         border-radius: 3em;
+//         .store-text {
+//             padding-bottom: 5px;
+//         }
+//     }
+//     .store-cards {
+//         width: 100%;
+//         margin: 0;
+//         border-radius: 2em;
+//         text-align: center;
+//         text-decoration: none;
+//         color: black;
+//     }
+// }
 
-.cart-display {
-    display: flex;
-    margin: 0% 10%;
-}
+// img {
+//     height: 300px;
+//     max-width: 300px;
+//     border-radius: 3em;
+//     object-fit: cover;
+//     padding: 10px 10px 5px 10px;
+// }
 
-.cart-item-list {
-    flex: 3;
-    margin: 0;
-    padding: 20px;
-}
+// // ----------- VENDOR COMPONENT --------------
 
-.cart-headers,
-.product-container {
-    text-align: center;
-    align-items: center;
-    display: flex;
-    border-bottom: 1px dotted black;
-}
+// .vendor-container {
+//     text-align: center;
+//     .vendor-img {
+//         animation: drop 1.5s ease;
+//         padding: 10px;
+//         margin: 10px 0px;
+//         height: 180px;
+//         width: 180px;
+//         border: 5px solid rgba(0, 0, 0, 0.8);
+//     }
+// }
 
-.cart-headers {
-    padding-bottom: 5px;
-    border-bottom: 2px solid black;
-}
+// .vendor-header {
+//     h1 {
+//         margin: 10px 0px;
+//     }
+// }
 
-.cart-totals-container {
-    flex: 1;
-    padding: 20px;
-    align-items: center;
-    text-align: center;
-}
+// @keyframes drop {
+//     0% {
+//         opacity: 0;
+//         transform: translateY(-80px);
+//     }
+//     100% {
+//         opacity: 1;
+//         transform: translateY(0px);
+//     }
+// }
 
-.cart-totals {
-    position: fixed;
-    border: 4px solid lightgrey;
-    border-radius: 2em;
-    padding: 25px 35px 25px 35px;
-}
+// .store-item {
+//     display: grid;
+//     text-align: left;
+//     max-width: 900px;
+//     grid-template-columns: 3fr 1fr;
+//     grid-gap: 2em;
+//     padding: 25px;
+//     justify-content: space-between;
+//     border: 1px dashed black;
+//     border-radius: 3em;
+//     margin-bottom: 1em;
+//     &-details {
+//         margin: 0;
+//         display: grid;
+//         grid-template-rows: 5fr 2fr;
+//         grid-template-columns: 2fr 1fr;
+//         gap: 1.5em;
+//         padding: 2px;
+//     }
+// }
 
-.order-summary {
-    border-bottom: 4px solid black;
-    h2 {
-        padding-bottom: 5px;
-    }
-}
+// .item-availability,
+// .item-price,
+// .item-purchase {
+//     margin: 0;
+// }
 
-.order-calculations {
-    display: grid;
-    grid-template-columns: 60% 40%;
-}
+// .item-detail {
+//     margin: 0;
+//     h3 {
+//         text-decoration: underline;
+//     }
+//     h4 {
+//         text-decoration: underline;
+//     }
+// }
 
-.cart-item,
-.product {
-    &-name {
-        flex: 3;
-    }
-    &-price,
-    &-quantity,
-    &-total {
-        flex: 1;
-    }
-}
+// .item-availability {
+//     margin: 0;
+// }
 
-.cart-subtotal,
-.cart-labels {
-    margin: 0;
-    text-align: left;
-    &-fee {
-        border-bottom: 2px solid black;
-    }
-    h3,
-    h4 {
-        padding: 3px 17px 6px 6px;
-    }
-}
+// .item-purchase {
+//     .quantity {
+//         margin-bottom: 6px;
+//         select {
+//             font-size: 1.05em;
+//             border: 1px solid black;
+//             cursor: pointer;
+//         }
+//     }
+//     button {
+//         padding: 5px 10px;
+//         font-weight: bold;
+//         cursor: pointer;
+//     }
+// }
 
-.cart-fee {
-    border-bottom: 2px solid black;
-}
+// .item-image {
+//     width: 250px;
+//     height: 250px;
+//     img {
+//         width: inherit;
+//         height: inherit;
+//         padding: 0;
+//         border: 1px solid grey;
+//     }
+// }
 
-.cart-total-price,
-.cart-labels-total {
-    border-bottom: 3px solid black;
-}
+// .add-cart {
+//     button {
+//         font-size: 1.1em;
+//         border-radius: 3em;
+//         box-shadow: none;
+//         border: 1px solid black;
+//     }
+// }
 
-.product {
-    &-name {
-        display: grid;
-        grid-template-columns: 3fr 2fr;
-        align-items: center;
-        padding: 5px 0px;
-        margin: 10px;
-        img {
-            width: 180px;
-            height: 180px;
-            padding: 0;
-            margin: 0;
-            border: 2px solid black;
-        }
-    }
-    &-text {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        height: 100%;
-        button {
-            padding: 5px 8px;
-            border-radius: 2em;
-            border: 1px solid black;
-        }
-    }
-}
+// .checkout-btn {
+//     padding: 15px;
+//     text-decoration: none;
+//     background-color: royalblue;
+//     border: 2px solid black;
+//     border-radius: 2em;
+// }
 
-.product-quantity {
-    margin-top: 2em;
-    // margin-bottom: 1em;
-    h3 {
-        display: inline;
-    }
+// .checkout-link {
+//     text-decoration: none;
+//     color: white;
+//     font-size: 1.5em;
+//     font-family: "Chelsea Market";
+// }
 
-    ion-icon {
-        font-size: 1.4em;
-        vertical-align: top;
-        &:hover {
-            cursor: pointer;
-        }
-    }
-    p {
-        margin-top: 1em;
-    }
-}
+// // ----------- ABOUT COMPONENT -----------------
 
-.complete-order {
-    margin: 20px 0px;
-    text-align: center;
-    button {
-        margin: 0 auto;
-        font-size: 1.2em;
-        padding: 15px;
-        border: 3px solid black;
-        border-radius: 3em;
-        &:hover {
-            background-color: green;
-            color: whitesmoke;
-        }
-    }
-}
+// // ----------- CART -------------
 
-.customer-container {
-    max-width: 1000px;
-    margin: 0% 31% 0% 9%;
-    // display: flex;
-}
+// .cart-container {
+//     margin: 1%;
+// }
 
-.customer {
-    &-form {
-        display: grid;
+// .cart-display {
+//     display: flex;
+//     margin: 0% 10%;
+// }
 
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 200px 2fr;
-        margin: 10px auto;
-        width: 550px;
-        height: 500px;
-        align-items: center;
-        label {
-            margin: 0;
-            font-size: 1.1em;
-            // background-color: blue;
-        }
-        input {
-            // background-color: green;
-            font-size: 1.1em;
-            padding: 4px 10px 4px 12px;
-            border-radius: 1.5em;
-            border: 1px solid darkgrey;
-            margin: 0 0 0 10px;
-        }
-        select {
-            width: 40%;
-            margin: 0 0 0 10px;
-            padding: 1% 4% 1% 6%;
-            // text-align: center;
-            // align-items: center;
-            font-size: 1.05em;
-            border-radius: 2em;
-            // background-color: grey;
-        }
-        .comments-box {
-            grid-row: 6 / 7;
-            grid-column: 1 / 3;
-            width: 90%;
-            align-items: center;
-            border-radius: 1.5em;
-            height: 180px;
-            padding: 10px 16px;
-            margin: 20px auto 0 auto;
-            font-size: 1.05em;
-        }
-        .complete-order {
-            grid-row: 7 / 8;
-            grid-column: 1 / 3;
-            width: 60%;
-            margin: 0 auto;
-            padding: 10px;
-            border: 2px solid grey;
-            &:hover {
-                cursor: pointer;
-                border: 3px solid black;
-                background-color: royalblue;
-                color: white;
-                font-size: 1.3em;
-            }
-        }
-    }
-}
+// .cart-item-list {
+//     flex: 3;
+//     margin: 0;
+//     padding: 20px;
+// }
 
-// ----------- MODAL -------------
+// .cart-headers,
+// .product-container {
+//     text-align: center;
+//     align-items: center;
+//     display: flex;
+//     border-bottom: 1px dotted black;
+// }
 
-.modal-backdrop {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.65);
-}
+// .cart-headers {
+//     padding-bottom: 5px;
+//     border-bottom: 2px solid black;
+// }
 
-.modal-box-delete {
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border: 2px solid black;
-    width: 50%;
-    text-align: center;
-    .remove-item {
-        color: rgba(255, 0, 0, 0.7);
-    }
-}
+// .cart-totals-container {
+//     flex: 1;
+//     padding: 20px;
+//     align-items: center;
+//     text-align: center;
+// }
 
-.delete-item-btns {
-    margin: 10px;
-    button {
-        padding: 5px 15px;
-        font-weight: bold;
-        font-size: 1.1em;
-        margin: 5px;
-        border: 1px solid black;
-        border-radius: 1em;
-        &:hover {
-            cursor: pointer;
-            background-color: black;
-            color: white;
-        }
-    }
-}
+// .cart-totals {
+//     position: fixed;
+//     border: 4px solid lightgrey;
+//     border-radius: 2em;
+//     padding: 25px 35px 25px 35px;
+// }
 
-h1 {
-    color: blue;
-    font-size: 10em;
-}
+// .order-summary {
+//     border-bottom: 4px solid black;
+//     h2 {
+//         padding-bottom: 5px;
+//     }
+// }
+
+// .order-calculations {
+//     display: grid;
+//     grid-template-columns: 60% 40%;
+// }
+
+// .cart-item,
+// .product {
+//     &-name {
+//         flex: 3;
+//     }
+//     &-price,
+//     &-quantity,
+//     &-total {
+//         flex: 1;
+//     }
+// }
+
+// .cart-subtotal,
+// .cart-labels {
+//     margin: 0;
+//     text-align: left;
+//     &-fee {
+//         border-bottom: 2px solid black;
+//     }
+//     h3,
+//     h4 {
+//         padding: 3px 17px 6px 6px;
+//     }
+// }
+
+// .cart-fee {
+//     border-bottom: 2px solid black;
+// }
+
+// .cart-total-price,
+// .cart-labels-total {
+//     border-bottom: 3px solid black;
+// }
+
+// .product {
+//     &-name {
+//         display: grid;
+//         grid-template-columns: 3fr 2fr;
+//         align-items: center;
+//         padding: 5px 0px;
+//         margin: 10px;
+//         img {
+//             width: 180px;
+//             height: 180px;
+//             padding: 0;
+//             margin: 0;
+//             border: 2px solid black;
+//         }
+//     }
+//     &-text {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: space-evenly;
+//         height: 100%;
+//         button {
+//             padding: 5px 8px;
+//             border-radius: 2em;
+//             border: 1px solid black;
+//         }
+//     }
+// }
+
+// .product-quantity {
+//     margin-top: 2em;
+//     // margin-bottom: 1em;
+//     h3 {
+//         display: inline;
+//     }
+
+//     ion-icon {
+//         font-size: 1.4em;
+//         vertical-align: top;
+//         &:hover {
+//             cursor: pointer;
+//         }
+//     }
+//     p {
+//         margin-top: 1em;
+//     }
+// }
+
+// .complete-order {
+//     margin: 20px 0px;
+//     text-align: center;
+//     button {
+//         margin: 0 auto;
+//         font-size: 1.2em;
+//         padding: 15px;
+//         border: 3px solid black;
+//         border-radius: 3em;
+//         &:hover {
+//             background-color: green;
+//             color: whitesmoke;
+//         }
+//     }
+// }
+
+// .customer-container {
+//     max-width: 1000px;
+//     margin: 0% 31% 0% 9%;
+//     // display: flex;
+// }
+
+// .customer {
+//     &-form {
+//         display: grid;
+
+//         grid-template-columns: 1fr 2fr;
+//         grid-template-rows: 1fr 1fr 1fr 1fr 1fr 200px 2fr;
+//         margin: 10px auto;
+//         width: 550px;
+//         height: 500px;
+//         align-items: center;
+//         label {
+//             margin: 0;
+//             font-size: 1.1em;
+//             // background-color: blue;
+//         }
+//         input {
+//             // background-color: green;
+//             font-size: 1.1em;
+//             padding: 4px 10px 4px 12px;
+//             border-radius: 1.5em;
+//             border: 1px solid darkgrey;
+//             margin: 0 0 0 10px;
+//         }
+//         select {
+//             width: 40%;
+//             margin: 0 0 0 10px;
+//             padding: 1% 4% 1% 6%;
+//             // text-align: center;
+//             // align-items: center;
+//             font-size: 1.05em;
+//             border-radius: 2em;
+//             // background-color: grey;
+//         }
+//         .comments-box {
+//             grid-row: 6 / 7;
+//             grid-column: 1 / 3;
+//             width: 90%;
+//             align-items: center;
+//             border-radius: 1.5em;
+//             height: 180px;
+//             padding: 10px 16px;
+//             margin: 20px auto 0 auto;
+//             font-size: 1.05em;
+//         }
+//         .complete-order {
+//             grid-row: 7 / 8;
+//             grid-column: 1 / 3;
+//             width: 60%;
+//             margin: 0 auto;
+//             padding: 10px;
+//             border: 2px solid grey;
+//             &:hover {
+//                 cursor: pointer;
+//                 border: 3px solid black;
+//                 background-color: royalblue;
+//                 color: white;
+//                 font-size: 1.3em;
+//             }
+//         }
+//     }
+// }
+
+// // ----------- MODAL -------------
+
+// .modal-backdrop {
+//     position: fixed;
+//     top: 0;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     z-index: 100;
+//     background-color: rgba(0, 0, 0, 0.65);
+// }
+
+// .modal-box-delete {
+//     background-color: white;
+//     margin: 15% auto;
+//     padding: 20px;
+//     border: 2px solid black;
+//     width: 50%;
+//     text-align: center;
+//     .remove-item {
+//         color: rgba(255, 0, 0, 0.7);
+//     }
+// }
+
+// .delete-item-btns {
+//     margin: 10px;
+//     button {
+//         padding: 5px 15px;
+//         font-weight: bold;
+//         font-size: 1.1em;
+//         margin: 5px;
+//         border: 1px solid black;
+//         border-radius: 1em;
+//         &:hover {
+//             cursor: pointer;
+//             background-color: black;
+//             color: white;
+//         }
+//     }
+// }
+
+// h1 {
+//     color: blue;
+//     font-size: 10em;
+// }

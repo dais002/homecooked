@@ -26,9 +26,10 @@ use Illuminate\Support\Facades\Route;
 // Route::put('/cuisines2/{cuisine}', "CuisinesController@update");
 // Route::delete('/cuisines2/{cuisine}', "CuisinesController@delete");
 
-Route::apiResource('/cuisines', 'CuisineController');
-Route::apiResource('/stores', 'StoreController');
-Route::apiResource('/items', 'ItemController');
+Route::apiResource('cuisines', 'CuisineController');
+Route::apiResource('stores', 'StoreController');
+// Route::apiResource('items', 'ItemController');
+Route::apiResource('stores.items', 'StoreItemController');
 
 // register a user - built in?
 // logout user - built in?

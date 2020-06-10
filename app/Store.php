@@ -13,8 +13,13 @@ class Store extends Model
         return $this->belongsTo(Cuisine::class);
     }
 
-    public function item()
+    public function items()
     {
         return $this->hasMany(Item::class);
+    }
+
+    public function getCuisineTypeAttribute()
+    {
+        return $this->cuisine->type;
     }
 }
