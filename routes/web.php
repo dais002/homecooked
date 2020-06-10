@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{url?}', function () {
-    return view('app');
-})->where('url', '.*');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::apiResource('cuisines', 'CuisineController');
+Route::apiResource('stores', 'StoreController');
+Route::apiResource('stores.items', 'StoreItemController');
+
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
