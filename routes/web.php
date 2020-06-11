@@ -3,16 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +11,12 @@ Route::get('/', function () {
 Route::apiResource('cuisines', 'CuisineController');
 Route::apiResource('stores', 'StoreController');
 Route::apiResource('stores.items', 'StoreItemController');
+
+// i added this route but can't seem to route to it correctly...
+// displays in route:list as 'stores.items.create' endpoint
+// i want to change the endpoint but then my route in show.blade breaks
+Route::get('stores.items.create', "StoreItemController@create")
+    ->name('stores.items.create');
 
 
 Auth::routes();

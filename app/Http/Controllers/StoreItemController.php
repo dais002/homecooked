@@ -30,6 +30,14 @@ class StoreItemController extends Controller
         return new ItemResource($storeItem);
     }
 
+    // added a create route
+    public function create(Store $store)
+    {
+        return view('stores.items.create', [
+            'store_id' => $store->id,
+        ]);
+    }
+
     public function update(ItemRequest $request, Store $store, Item $item)
     {
         $storeItem = $store->items()

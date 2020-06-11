@@ -24,15 +24,16 @@
   <div id="app">
     <section class="px-8 py-4 mb-6">
       <header class="container mx-auto">
-        <div class="flex justify-between">
+        <div class="flex justify-between px-8">
           @if (auth()->check())
-          <div class="">
-            @include ('_navbar')
-          </div>
-          <img src="/images/main-logo.svg" alt="logo" class="h-24 rounded-lg">
-          <div class="">
-            @include ('_search')
-          </div>
+
+          @include ('_search')
+          <a href="{{ route('stores.index') }}">
+            <img src="/images/main-logo.svg" alt="logo" class="h-24 rounded-lg">
+          </a>
+
+          @include ('_navbar')
+
           @endif
         </div>
       </header>

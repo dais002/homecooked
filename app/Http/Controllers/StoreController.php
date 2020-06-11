@@ -13,11 +13,11 @@ class StoreController extends Controller
     public function index()
     {
         $store = Store::paginate();
-        $storeCollection = StoresResource::collection($store);
-        // dd($storeCollection);
+        $storeCollection = StoresResource::collection($store)
+            ->collection;
         // return StoresResource::collection($store);
         return view('stores.index', [
-            'stores' => $storeCollection->collection,
+            'stores' => $storeCollection,
         ]);
     }
 
@@ -29,10 +29,8 @@ class StoreController extends Controller
 
     public function show(Store $store)
     {
-        $showStore = new StoreResource($store);
-        return view('stores.show', [
-            'stores' => $showStore,
-        ]);
+        // return new StoreResource($store);
+        return view('stores.show', compact('store'));
     }
 
     public function update(StoreRequest $request, $id)
