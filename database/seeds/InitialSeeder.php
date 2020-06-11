@@ -17,8 +17,8 @@ class InitialSeeder extends Seeder
         // create 10 cuisines
         factory(App\Cuisine::class, 10)->create();
 
-        // create 10 stores
-        $stores = factory(App\Store::class, 5)->create();
+        // create 8 stores
+        $stores = factory(App\Store::class, 8)->create();
 
         // for each store, create 5 items
         $stores->each(function ($store) {

@@ -35,6 +35,9 @@ class CreateInitialTables extends Migration
                 ->constrained()
                 ->onDelete('cascade')
                 ->nullable();
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
         });
 

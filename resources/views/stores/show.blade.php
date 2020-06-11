@@ -4,7 +4,7 @@
     <img src="{{ $store->logo }}" alt="store-logo" class="mb-6 mx-auto">
     <div>
       <!-- this route works for now... how would you rewrite this? -->
-      <a href="{{ route('stores.items.create', $store->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-full">Add Item</a>
+      <a href="{{ route('stores.items.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-full">Add Item</a>
     </div>
   </div>
 
