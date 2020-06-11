@@ -26,4 +26,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    // gravatar attribute
+    public function getGravatarAttribute()
+    {
+        $hash = md5(strtolower(trim($this->attributes['email'])));
+        return 'http://gravatar.com/avatar/' . $hash;
+    }
 }

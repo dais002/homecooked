@@ -1,6 +1,6 @@
 <x-app>
-
-  <div class="mx-auto max-w-screen-lg grid lg:grid-cols-4 lg:gap-4 md:grid-cols-3 md:gap-3 sm:grid-cols-2 sm:gap-2 border border-gray-300 rounded-lg">
+  <!-- <h1>Welcome </h1> -->
+  <div class="mx-auto max-w-screen-lg grid grid-cols-2 gap-4 border border-gray-300 rounded-lg">
     @foreach ($stores as $store)
     <div class="border-2 border-solid">
       <a href="{{ route('stores.show', $store->id) }}">
@@ -19,5 +19,7 @@
     </div>
     @endforeach
   </div>
-
+  <div>
+    {{ $stores->links() }}
+  </div>
 </x-app>

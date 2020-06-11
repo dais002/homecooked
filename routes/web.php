@@ -10,13 +10,15 @@ Route::get('/', function () {
 
 Route::apiResource('cuisines', 'CuisineController');
 Route::apiResource('stores', 'StoreController');
-Route::apiResource('stores.items', 'StoreItemController');
+Route::resource('stores.items', 'StoreItemController');
 
-// would love the endpoint to be /stores/{store}/items/create but can't get it to work properly...
-Route::get('stores.items.create', "StoreItemController@create")
-    ->name('stores.items.create');
-
-
+// Route::get('stores/{store}/items', 'StoreItemController@index');
+// Route::get('stores/{store}/items/{item}', 'StoreItemController@show');
+// Route::post('stores/{store}/items', 'StoreItemController@store');
+// Route::get('stores/{store}/items/create', 'StoreItemController@create');
+// Route::get('stores/{store}/items/{item}/edit', 'StoreItemController@edit');
+// Route::match(['put', 'patch'], 'stores/{store}/items/{item}', 'StoreItemController@update');
+// Route::delete('stores/{store}/items/{item}', 'StoreItemController@destroy');
 
 
 Auth::routes();
