@@ -12,11 +12,11 @@ Route::apiResource('cuisines', 'CuisineController');
 Route::apiResource('stores', 'StoreController');
 Route::apiResource('stores.items', 'StoreItemController');
 
-// i added this route but can't seem to route to it correctly...
-// displays in route:list as 'stores.items.create' endpoint
-// i want to change the endpoint but then my route in show.blade breaks
+// would love the endpoint to be /stores/{store}/items/create but can't get it to work properly...
 Route::get('stores.items.create', "StoreItemController@create")
     ->name('stores.items.create');
+
+
 
 
 Auth::routes();

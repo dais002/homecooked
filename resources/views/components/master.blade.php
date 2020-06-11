@@ -23,13 +23,14 @@
 <body>
   <div id="app">
     <section class="px-8 py-4 mb-6">
-      <header class="container mx-auto">
+      <header class="container mx-auto max-w-screen-lg">
         <div class="flex justify-between px-8">
           @if (auth()->check())
 
           @include ('_search')
           <a href="{{ route('stores.index') }}">
-            <img src="/images/main-logo.svg" alt="logo" class="h-24 rounded-lg">
+
+            <img src="/images/logo.svg" alt="logo" class="h-24 rounded-lg">
           </a>
 
           @include ('_navbar')

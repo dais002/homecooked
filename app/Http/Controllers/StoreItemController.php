@@ -6,7 +6,6 @@ use App\Http\Requests\ItemRequest;
 use App\Http\Resources\ItemResource;
 use App\Item;
 use App\Store;
-use Illuminate\Http\Request;
 
 class StoreItemController extends Controller
 {

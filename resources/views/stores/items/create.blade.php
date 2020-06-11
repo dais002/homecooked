@@ -1,7 +1,10 @@
 <x-app>
+  <!-- this is returning an empty array... :( :( :( -->
+  <?php echo $store; ?>
+  <!-- trying to get store_id passed through so i can create a new item -->
   <div class="container w-1/2 mx-auto p-10 bg-blue-200 rounded-lg">
     <h1 class="mb-4 text-center font-bold">Create a New Item</h1>
-    <form action="/stores/{{ $store->id }}/items" method="post" enctype="multipart/form-data">
+    <form action="stores.items.create" method="post" enctype="multipart/form-data">
       @csrf
 
       <div class="mb-6">
