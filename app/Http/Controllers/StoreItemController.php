@@ -32,7 +32,9 @@ class StoreItemController extends Controller
     // added a create route
     public function create(Store $store)
     {
-        return view('stores.items.create', compact('store'));
+        return view('stores.items.create', [
+            'store' => $store,
+        ]);
     }
 
     public function update(ItemRequest $request, Store $store, Item $item)

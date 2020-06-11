@@ -24,18 +24,28 @@
   <div id="app">
     <section class="px-8 py-4 mb-6">
       <header class="container mx-auto max-w-screen-lg">
-        <div class="flex justify-between px-8">
+        <div class="flex justify-between items-center px-8">
+
           @if (auth()->check())
-
           @include ('_search')
-          <a href="{{ route('stores.index') }}">
-
-            <img src="/images/logo.svg" alt="logo" class="h-24 rounded-lg">
-          </a>
-
-          @include ('_navbar')
-
           @endif
+
+          <div class="flex items-center">
+            <a href="{{ route('stores.index') }}">
+              <img src="/images/logo.svg" alt="logo" class="h-24 rounded-lg">
+            </a>
+            <span class="font-bold text-lg">getHomeCooked</span>
+          </div>
+
+          @guest
+          <a class="h-12 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" href="{{ route('login') }}">Login</a>
+          @endguest
+
+
+          @if (auth()->check())
+          @include ('_navbar')
+          @endif
+
         </div>
       </header>
     </section>
