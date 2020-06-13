@@ -24,5 +24,13 @@ class InitialSeeder extends Seeder
         $stores->each(function ($store) {
             factory('App\Item', 5)->create(['store_id' => $store->id]);
         });
+
+        App\Role::create(['name' => 'moderator']); // does everything (can delete store)
+        App\Role::create(['name' => 'manager']); // can create item
+        App\Role::create(['name' => 'worker']); // can edit item
+
+        App\Ability::create(['name' => 'delete_store']); // moderator
+        App\Ability::create(['name' => 'add_item']); // manager
+        App\Ability::create(['name' => 'edit_item']); // worker
     }
 }

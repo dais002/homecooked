@@ -44,6 +44,7 @@ class StoreController extends Controller
     public function destroy(Store $store)
     {
         $store->delete();
-        return response()->noContent();
+        return back();
+        // return response()->noContent();
     }
 }

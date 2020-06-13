@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
-    protected $fillable = ['name', 'logo', 'cuisine_id'];
+    protected $fillable = ['name', 'logo', 'cuisine_id', 'user_id'];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function cuisine()
     {

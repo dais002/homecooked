@@ -48,6 +48,16 @@
 
         </div>
       </header>
+      <hr>
+      @if (auth()->check())
+      <div class="mx-auto text-center mt-4 border border-black bg-gray-300 w-1/2">
+        <h1>Logged in as {{ auth()->user()->name }}</h1>
+        <h3>You're authorized to...</h3>
+        @foreach (auth()->user()->abilities() as $ability)
+        <h4>{{ $ability }}</h4>
+        @endforeach
+      </div>
+      @endif
     </section>
     {{ $slot }}
   </div>

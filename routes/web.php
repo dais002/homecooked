@@ -8,9 +8,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::apiResource('cuisines', 'CuisineController');
-Route::apiResource('stores', 'StoreController');
-Route::resource('stores.items', 'StoreItemController');
+Route::middleware('auth')->group(function () {
+    Route::apiResource('cuisines', 'CuisineController');
+    Route::apiResource('stores', 'StoreController');
+    Route::resource('stores.items', 'StoreItemController');
+});
+
 
 // Route::get('stores/{store}/items', 'StoreItemController@index');
 // Route::get('stores/{store}/items/{item}', 'StoreItemController@show');
