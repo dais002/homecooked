@@ -1,5 +1,3 @@
-## Summary
-
 An e-commerce platform to allow home-chefs to sell their foods built with -
 - Laravel(PHP)
 - MySQL
