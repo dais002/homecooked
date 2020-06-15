@@ -2,19 +2,25 @@
   <div class="mx-auto text-center mb-6">
     <h1 class="mb-4">Welcome to {{ $store->name }}</h1>
     <img src="{{ $store->logo }}" alt="store-logo" class="mb-6 mx-auto">
-    <div>
-      <!-- this route works for now... how would you rewrite this? -->
-      <a href="{{ route('stores.items.create', $store->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-full">Add Item</a>
+    @can ('add_item')
+    <div class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded-full w-1/2 mx-auto">
+      <a href="{{ route('stores.items.create', $store->id) }}">Add Item</a>
     </div>
+    @endcan
   </div>
 
   <div class="container w-2/3 mx-auto">
     @forelse ($store->items as $item)
     <div class="flex justify-between bg-red-100 border border-black border-dotted mb-4">
       <div class="p-3 flex-1 flex flex-col justify-between">
-        <div>
-          <h2 class="font-bold">{{ $item->name }}</h2>
-          <p>{{ $item->description }}</p>
+        <div class="flex justify-between">
+          <div>
+            <h2 class="font-bold">{{ $item->name }}</h2>
+            <p>{{ $item->description }}</p>
+          </div>
+          <div class="bg-red-500 hover:bg-red-700 text-lg font-bold py-3 px-6 border border-black rounded-full">
+            <a href="{{ route('stores.items.edit', ['store' => $store->id, 'item' => $item->id]) }}">Edit Item</a>
+          </div>
         </div>
         <div class="flex justify-between">
           <div>

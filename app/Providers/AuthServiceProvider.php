@@ -25,6 +25,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // global before all check if user has rights
+        Gate::before(function ($user, $ability) {
+            if ($user->abilities()->contains($ability)) {
+                return true;
+            }
+        });
     }
 }

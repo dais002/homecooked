@@ -1,35 +1,21 @@
 <x-app>
+  <?php
+  echo "Store: " . $store . "<br>";
+  echo "Item: " . $item . "<br>";
+  echo "Patch path: " . "/stores/$store->id/items/$item->id";
+  ?>
   <div class="container w-1/2 mx-auto p-10 bg-blue-200 rounded-lg">
-    <h1 class="mb-4 text-center font-bold">Create a New Item</h1>
-    <form action="/stores/{{ $store->id }}/items" method="post">
+    <h1 class="mb-4 text-center font-bold">Edit Item {{ $item->name }}</h1>
+    <form action="/stores/{{ $store->id }}/items/{{ $item->id }}" method="POST" enctype="multipart/form-data">
       @csrf
-
-      <div class="mb-6">
-        <label for="name" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-          Name:
-        </label>
-        <input type="text" class="border border-gray-400 p-2 w-full" name="name" id="name" required>
-        @error('name')
-        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-        @enderror
-      </div>
+      @method('PATCH')
 
       <div class="mb-6">
         <label for="description" class="block mb-2 uppercase font-bold text-xs text-gray-700">
           Description:
         </label>
-        <textarea type="text" class="border border-gray-400 p-2 w-full" name="description" id="description" required></textarea>
+        <textarea type="text" class="border border-gray-400 p-2 w-full" name="description" id="description" required>{{ $item->description }}</textarea>
         @error('description')
-        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-        @enderror
-      </div>
-
-      <div class="mb-6">
-        <label for="price" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-          Price:
-        </label>
-        <input type="text" class="border border-gray-400 p-2 w-full" name="price" id="price" required>
-        @error('price')
         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
         @enderror
       </div>
@@ -38,7 +24,7 @@
         <label for="image" class="block mb-2 uppercase font-bold text-xs text-gray-700">
           Item Image:
         </label>
-        <input type="text" class="border border-gray-400 p-2 w-full" name="image" id="image" required>
+        <input value="{{ $item->image }}" type="text" class="border border-gray-400 p-2 w-full" name="image" id="image" required>
         @error('image')
         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
         @enderror
@@ -48,7 +34,7 @@
         <label for="limit" class="block mb-2 uppercase font-bold text-xs text-gray-700">
           Quantity Available:
         </label>
-        <input type="text" class="border border-gray-400 p-2 w-full" name="limit" id="limit" required>
+        <input value="{{ $item->limit }}" type="text" class="border border-gray-400 p-2 w-full" name="limit" id="limit" required>
         @error('limit')
         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
         @enderror

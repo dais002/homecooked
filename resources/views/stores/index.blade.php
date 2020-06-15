@@ -13,6 +13,15 @@
             <p class="text-sm">
               {{ $store->cuisineType }}
             </p>
+            @can ('delete_store', $store)
+            <form action="stores/{{ $store->id }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="px-4 py-2 bg-red-100 border border-red-500 text-s font-bold">
+                Delete Store
+              </button>
+            </form>
+            @endcan
           </div>
         </div>
       </a>
