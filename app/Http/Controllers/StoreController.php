@@ -6,13 +6,16 @@ use App\Http\Requests\StoreRequest;
 use App\Http\Resources\StoreResource;
 use App\Http\Resources\StoresResource;
 use App\Store;
+use App\Tag;
 
 class StoreController extends Controller
 {
 
     public function index()
     {
-        $stores = Store::paginate(4);
+
+        $stores = Store::paginate(15);
+
         // $storeCollection = StoresResource::collection($stores)
         // return $storeCollection;
         return view('stores.index', [
@@ -22,6 +25,7 @@ class StoreController extends Controller
 
     public function store(StoreRequest $request)
     {
+        // $store = auth()->user()->stores()->create($request->validated());
         $store = Store::create($request->validated());
         return new StoreResource($store);
     }

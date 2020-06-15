@@ -38,7 +38,7 @@
           </div>
 
           @guest
-          <a class="h-12 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" href="{{ route('login') }}">Login</a>
+          <a class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500 mr-2" href="{{ route('login') }}">Login</a>
           @endguest
 
 
@@ -47,15 +47,16 @@
           @endif
 
         </div>
+        <hr>
       </header>
-      <hr>
       @if (auth()->check())
       <div class="mx-auto text-center mt-4 border border-black bg-gray-300 w-1/2">
         <h1>Logged in as {{ auth()->user()->name }}</h1>
-        <h3>You're authorized to...</h3>
-        @foreach (auth()->user()->abilities() as $ability)
-        <h4>{{ $ability }}</h4>
-        @endforeach
+        <h3>You're authorized to <br>
+          @foreach (auth()->user()->roles as $role)
+          {{ $role->label }}<br>
+          @endforeach
+        </h3>
       </div>
       @endif
     </section>

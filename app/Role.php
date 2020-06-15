@@ -9,13 +9,13 @@ class Role extends Model
 
     protected $fillable = ['name', 'label'];
 
-    public function abilities()
+    public function users()
     {
-        return $this->belongsToMany(Ability::class)->withTimestamps();
+        return $this->belongsToMany(User::class);
     }
 
-    public function allowTo($ability)
+    public function assignUserToRole($user)
     {
-        return $this->abilities()->sync($ability, false);
+        return $this->users->sync($user, false);
     }
 }

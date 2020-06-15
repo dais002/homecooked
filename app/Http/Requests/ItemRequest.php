@@ -24,11 +24,11 @@ class ItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['max:255', 'string', 'required'],
-            'description' => ['string', 'max:255'],
-            'price' => ['integer', 'required'],
-            'image' => ['string', 'max:255'],
-            'limit' => ['integer', 'required'],
+            'name' => 'max:255|string|required',
+            'description' => 'string|max:255',
+            'price' => 'integer|required',
+            'image' => 'string|max:255',
+            'limit' => 'integer|required',
         ];
     }
 }

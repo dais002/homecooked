@@ -1,5 +1,4 @@
 <x-app>
-  <!-- <h1>Welcome </h1> -->
   <div class="mx-auto max-w-screen-lg grid grid-cols-2 gap-4 border border-gray-300 rounded-lg">
     @foreach ($stores as $store)
     <div class="border-2 border-solid">
@@ -10,10 +9,7 @@
             <h5 class="font-bold">
               {{ $store->name }}
             </h5>
-            <p class="text-sm">
-              {{ $store->cuisineType }}
-            </p>
-            @can ('delete_store', $store)
+            @can ('admin', $store)
             <form action="stores/{{ $store->id }}" method="POST">
               @csrf
               @method('DELETE')

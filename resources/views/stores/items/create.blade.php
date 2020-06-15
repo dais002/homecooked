@@ -1,7 +1,7 @@
 <x-app>
   <div class="container w-1/2 mx-auto p-10 bg-blue-200 rounded-lg">
     <h1 class="mb-4 text-center font-bold">Create a New Item</h1>
-    <form action="/stores/{{ $store->id }}/items" method="post">
+    <form action="{{ route('stores.items.store', ['store' => $store]) }}" method="post">
       @csrf
 
       <div class="mb-6">

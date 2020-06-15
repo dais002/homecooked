@@ -16,7 +16,6 @@ class StoreItemController extends Controller
         return ItemResource::collection($items);
     }
 
-    // store comes first due to endpoint url
     public function store(Store $store, ItemRequest $request)
     {
         $store->items()->create($request->validated());
@@ -34,7 +33,6 @@ class StoreItemController extends Controller
         return new ItemResource($storeItem);
     }
 
-    // added a create route
     public function create(Store $store)
     {
         return view('stores.items.create', [
@@ -42,17 +40,21 @@ class StoreItemController extends Controller
         ]);
     }
 
-    // update route
-    public function update(Store $store, Item $item, ItemRequest $request)
+    public function update(Store $store, Item $item)
     {
-        die('in update');
+        $attributes = request()->validate([
+            'description' => 'string|max:255|nullable',
+            'image' => 'string|nullable',
+            'limit' => 'integer|required'
+        ]);
+
         $store->items()
             ->findOrFail($item->id)
-            ->update($request->validated());
+            ->update($attributes);
+
         return view('stores.show', [
             'store' => $store,
         ]);
-        // return new ItemResource($storeItem);
     }
 
     // added a edit route

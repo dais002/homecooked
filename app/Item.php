@@ -13,4 +13,9 @@ class Item extends Model
     {
         return $this->belongsTo(Store::class);
     }
+
+    public function carts()
+    {
+        return $this->belongsToMany(Cart::class);
+    }
 }

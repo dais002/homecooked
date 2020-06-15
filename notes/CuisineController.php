@@ -6,6 +6,7 @@ use App\Cuisine;
 use App\Http\Requests\CuisineRequest;
 use App\Http\Resources\CuisineResource;
 
+// will not use - saving for example
 class CuisineController extends Controller
 {
 
