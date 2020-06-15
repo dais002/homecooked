@@ -9,7 +9,5 @@ $factory->define(Store::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'logo' => $faker->imageUrl($width = 200, $height = 200),
-        'cuisine_id' => $faker->randomDigitNot(0),
-        'user_id' => $faker->numberBetween($min = 1, $max = 5),
     ];
 });

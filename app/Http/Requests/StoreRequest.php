@@ -26,7 +26,6 @@ class StoreRequest extends FormRequest
         return [
             'name' => ['string', 'max:255', 'required'],
             'logo' => ['string', 'max:255'],
-            'cuisine_id' => ['integer'],
         ];
     }
 }

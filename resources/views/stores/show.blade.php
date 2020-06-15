@@ -2,7 +2,7 @@
   <div class="mx-auto text-center mb-6">
     <h1 class="mb-4">Welcome to {{ $store->name }}</h1>
     <img src="{{ $store->logo }}" alt="store-logo" class="mb-6 mx-auto">
-    @can ('add_item')
+    @can ('manager')
     <div class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded-full w-1/2 mx-auto">
       <a href="{{ route('stores.items.create', $store->id) }}">Add Item</a>
     </div>
@@ -16,11 +16,16 @@
         <div class="flex justify-between">
           <div>
             <h2 class="font-bold">{{ $item->name }}</h2>
-            <p>{{ $item->description }}</p>
+            <p class="mb-2">{{ $item->description }}</p>
+            @foreach ($item->tags as $tag)
+            <a class="border border-black px-1 bg-orange-500 hover:bg-orange-700 mr-2" href="{{ route('stores.index', ['tag' => $tag->name]) }}">{{ $tag->name }}</a>
+            @endforeach
           </div>
-          <div class="bg-red-500 hover:bg-red-700 text-lg font-bold py-3 px-6 border border-black rounded-full">
-            <a href="{{ route('stores.items.edit', ['store' => $store->id, 'item' => $item->id]) }}">Edit Item</a>
+          @can('manager')
+          <div>
+            <a class="flex items-center bg-red-500 hover:bg-red-700 text-lg font-bold py-3 px-6 border border-black rounded-full" href="{{ route('stores.items.edit', ['store' => $store, 'item' => $item]) }}">Edit Item</a>
           </div>
+          @endcan
         </div>
         <div class="flex justify-between">
           <div>

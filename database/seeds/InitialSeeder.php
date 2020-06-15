@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class InitialSeeder extends Seeder
 {
@@ -11,26 +12,39 @@ class InitialSeeder extends Seeder
      */
     public function run()
     {
-        // create 5 users
-        $users = factory(App\User::class, 5)->create();
+        // create users for each role
+        factory(App\User::class)->create([
+            'name' => 'admin',
+            'email' => 'admin@test.com',
+            'password' => 'password'
+        ]);
 
-        // create 10 cuisines
-        factory(App\Cuisine::class, 10)->create();
+        factory(App\User::class)->create([
+            'name' => 'manager',
+            'email' => 'manager@test.com',
+            'password' => 'password'
+        ]);
 
-        // create 8 stores
-        $stores = factory(App\Store::class, 8)->create();
+        factory(App\User::class)->create([
+            'name' => 'guest',
+            'email' => 'guest@test.com',
+            'password' => 'password'
+        ]);
 
-        // for each store, create 5 items
+        // create specific roles
+        $adminRole = App\Role::create(['name' => 'admin', 'label' => 'Administrator']); // can modify stores
+        $managerRole = App\Role::create(['name' => 'manager', 'label' => 'Store Manager']); // can modify items
+
+        // attach created roles
+        $admin = App\User::find(1)->roles()->attach($adminRole);
+        $manager = App\User::find(2)->roles()->attach($managerRole);
+
+        // create stores
+        $stores = factory(App\Store::class, 9)->create();
+
+        // for each store, create items
         $stores->each(function ($store) {
             factory('App\Item', 5)->create(['store_id' => $store->id]);
         });
-
-        App\Role::create(['name' => 'moderator']); // does everything (can delete store)
-        App\Role::create(['name' => 'manager']); // can create item
-        App\Role::create(['name' => 'worker']); // can edit item
-
-        App\Ability::create(['name' => 'delete_store']); // moderator
-        App\Ability::create(['name' => 'add_item']); // manager
-        App\Ability::create(['name' => 'edit_item']); // worker
     }
 }

@@ -9,9 +9,11 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::apiResource('cuisines', 'CuisineController');
-    Route::apiResource('stores', 'StoreController');
-    Route::resource('stores.items', 'StoreItemController');
+    Route::apiResource('stores', 'StoreController'); // index, show, destroy 
+    Route::resource('stores.items', 'StoreItemController'); // create, store, edit, update, destroy
+    Route::apiResource('carts', 'CartController'); // index, store, patch, destroy
+    Route::apiResource('carts.items', 'CartItemController'); // store, patch
+    Route::apiResource('orders', 'OrderController'); // store
 });
 
 

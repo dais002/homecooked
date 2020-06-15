@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'username', 'avatar', 'name', 'email', 'password',
+        'name', 'email', 'password',
     ];
 
     protected $hidden = [
@@ -22,14 +22,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function order()
+    public function carts()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Cart::class);
     }
 
     public function stores()
     {
-        return $this->hasMany(Store::class);
+        return $this->belongsToMany(Store::class);
+    }
+
+    public function assignStore($store)
+    {
+        $this->stores()->sync($store, false);
+    }
+
+    public function storeName()
+    {
+        return $this->stores->map(function ($store) {
+            return $store->name;
+        });
     }
 
     // gravatar attribute
@@ -41,7 +53,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class)->withTimestamps();
+        return $this->belongsToMany(Role::class);
     }
 
     // assign role to user
@@ -51,9 +63,10 @@ class User extends Authenticatable
         $this->roles()->sync($role, false);
     }
 
-    // grabbing the ability names
-    public function abilities()
+    public function roleName()
     {
-        return $this->roles->map->abilities->flatten()->pluck('name')->unique();
+        return $this->roles->map(function ($role) {
+            return $role->name;
+        });
     }
 }

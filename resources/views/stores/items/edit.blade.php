@@ -6,7 +6,7 @@
   ?>
   <div class="container w-1/2 mx-auto p-10 bg-blue-200 rounded-lg">
     <h1 class="mb-4 text-center font-bold">Edit Item {{ $item->name }}</h1>
-    <form action="/stores/{{ $store->id }}/items/{{ $item->id }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('stores.items.update', ['store' => $store, 'item' => $item]) }}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PATCH')
 
@@ -34,7 +34,7 @@
         <label for="limit" class="block mb-2 uppercase font-bold text-xs text-gray-700">
           Quantity Available:
         </label>
-        <input value="{{ $item->limit }}" type="text" class="border border-gray-400 p-2 w-full" name="limit" id="limit" required>
+        <input value="{{ $item->limit }}" type="number" class="border border-gray-400 p-2 w-full" name="limit" id="limit" required>
         @error('limit')
         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
         @enderror
