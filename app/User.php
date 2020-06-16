@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -22,6 +21,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // used to pull most recent cart that's not a completed order
+    public function getCartAttribute()
+    {
+        // return $this->carts()->firstOrCreate([]);
+        $cart = $this->carts()->whereNotIn('id', Order::all()->pluck('id'))->first();
+        if (!$cart) {
+            $cart = $this->carts()->create();
+        };
+        return $cart;
+    }
+
+    public function getCartTotalAttribute()
+    {
+
+        return $this->cart->cartItems->pluck('quantity')->sum();
+    }
+
     public function carts()
     {
         return $this->hasMany(Cart::class);
@@ -35,13 +51,6 @@ class User extends Authenticatable
     public function assignStore($store)
     {
         $this->stores()->sync($store, false);
-    }
-
-    public function storeName()
-    {
-        return $this->stores->map(function ($store) {
-            return $store->name;
-        });
     }
 
     // gravatar attribute
@@ -63,10 +72,8 @@ class User extends Authenticatable
         $this->roles()->sync($role, false);
     }
 
-    public function roleName()
+    public function getRoleAttribute()
     {
-        return $this->roles->map(function ($role) {
-            return $role->name;
-        });
+        return $this->roles->pluck('name');
     }
 }
