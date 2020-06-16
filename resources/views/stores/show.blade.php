@@ -19,9 +19,19 @@
             <p class="mb-2">{{ $item->description }}</p>
           </div>
           @can('manager')
-          <div>
-            <a class="flex items-center bg-red-500 hover:bg-red-700 text-lg font-bold py-3 px-6 border border-black rounded-full" href="{{ route('stores.items.edit', ['store' => $store, 'item' => $item]) }}">Edit Item</a>
+          <div class="flex">
+            <div>
+              <a class="flex items-center bg-gray-500 hover:bg-gray-700 text-lg font-bold py-2 px-4 border border-black rounded-full" href="{{ route('stores.items.edit', ['store' => $store, 'item' => $item]) }}">Edit Item</a>
+            </div>
+            <div>
+              <form action="{{ route('stores.items.destroy', ['store' => $store->id, 'item' => $item->id]) }}" method="POST" class="text-center">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="bg-red-500 hover:bg-red-700 text-lg font-bold py-2 px-4 border border-black rounded-full">Delete Item</button>
+              </form>
+            </div>
           </div>
+
           @endcan
         </div>
         <div class="flex justify-between">
@@ -50,7 +60,9 @@
       </div>
     </div>
     @empty
+
     <p>No items avaialble at this time.</p>
+
     @endforelse
   </div>
 </x-app>

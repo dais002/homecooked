@@ -52,18 +52,22 @@
       @if (auth()->check())
       <div class="mx-auto text-center mt-4 border border-black bg-gray-300 w-1/2">
         <h1>Logged in as '{{ auth()->user()->name }}'</h1>
+        @if (auth()->user()->roles->count() === 0)
+        <h3>No Authorization privileges.</h3>
+        @else
         <h3>Authorization Privileges:<br>
           @foreach (auth()->user()->roles as $role)
           {{ $role->label }}<br>
           @endforeach
         </h3>
+        @endif
       </div>
       @endif
     </section>
     {{ $slot }}
   </div>
 
-  <!-- <script src="http://unpkg.com/turbolinks"></script> -->
+  <script src="http://unpkg.com/turbolinks"></script>
 
 </body>
 
