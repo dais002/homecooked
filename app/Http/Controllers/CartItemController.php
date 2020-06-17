@@ -5,39 +5,40 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Http\Requests\CartItemRequest;
 use App\Item;
-use Illuminate\Http\Request;
 
 class CartItemController extends Controller
 {
 
-    public function store(Request $request)
+    public function update(Cart $cart, Item $item, CartItemRequest $request)
     {
-        $attributes = request()->validate([
-            'item_id' => 'exists:items,id|required|integer',
-            'quantity' => 'required|integer',
-        ]);
+        $request->validated();
+        $quantity = $request->quantity;
 
-        $cart = auth()->user()->cart;
-        $item = Item::find($attributes['item_id']);
-        $quantity = $attributes['quantity'];
+        $hasItem = $cart->items->contains($item->id);
 
-        $cart->items()->attach($item, ['quantity' => $quantity]);
+        if ($hasItem) {
+            if ($item->limit - $quantity < 0) return back();
+            $previousQuantity = $cart->items->find($item->id)->pivot->quantity;
+
+            $item->limit -= $quantity;
+            $item->save();
+
+            $quantity += $previousQuantity;
+
+            if ($quantity === 0) {
+                $cart->items()->detach($item->id);
+            } else {
+                $cart->items()->updateExistingPivot($item, ['quantity' => $quantity]);
+            }
+        } else {
+            // update item limit on items table
+            $item->limit -= $quantity;
+            $item->save();
+
+            // create new cart-item
+            $cart->items()->attach($item, ['quantity' => $quantity]);
+        }
 
         return back();
-    }
-
-    public function update($id, Request $request)
-    {
-
-
-        // in shopping cart actions
-        // increase/decrease quantities
-        // get cart-id, search for item-id, update from request
-        // if user clicked delete cart item, is it a patch or destroy?
-    }
-
-    public function destroy($id)
-    {
-        //
     }
 }

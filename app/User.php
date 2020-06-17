@@ -34,8 +34,7 @@ class User extends Authenticatable
 
     public function getCartTotalAttribute()
     {
-
-        return $this->cart->cartItems->pluck('quantity')->sum();
+        return $this->cart->items->pluck('pivot')->pluck('quantity')->sum();
     }
 
     public function carts()
@@ -65,7 +64,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
-    // assign role to user
+    // assign role to
     public function assignRole($role)
     {
         // add new records if necessary, don't drop anything
