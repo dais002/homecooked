@@ -14,7 +14,8 @@ Route::middleware('auth')->group(function () {
     Route::apiResource('roles.users', 'RoleUserController')->except(['index', 'show', 'destroy']); // store, patch
 
     Route::get('cart', 'CartController@index')->name('cart.index'); // index
-    Route::apiResource('carts.items', 'CartItemController')->except(['index', 'show']); // store, patch, destroy
+    Route::put('carts/{cart}/items/{item}', 'CartItemController@update')->name('carts.items.update');
+    // Route::apiResource('carts.items', 'CartItemController')->except(['index', 'show']); // store, patch, destroy
     Route::apiResource('order', 'OrderController')->except(['show', 'update', 'destroy']); // index, store
 });
 

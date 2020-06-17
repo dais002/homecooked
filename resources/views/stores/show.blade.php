@@ -40,8 +40,9 @@
             <h4>Available: {{ $item->limit }}</h4>
           </div>
           <div>
-            <form action="{{ route('carts.items.store', ['cart' => auth()->user()->cart->id, 'item_id' => $item->id]) }}" method="POST" class="text-center">
+            <form action="{{ route('carts.items.update', ['cart' => auth()->user()->cart, 'item' => $item]) }}" method="POST" class="text-center">
               @csrf
+              @method('PUT')
               <div class="mb-2">
                 <span class="mr-1 text-lg">Quantity:</span>
                 <select name="quantity" id="quantity" class="px-1 border border-grey-400">

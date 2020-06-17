@@ -13,9 +13,9 @@
               <p class="mb-2">{{ $item->description }}</p>
             </div>
             <div>
-              <form action="{{ route('carts.items.destroy', ['cart' => auth()->user()->cart->id, 'item' => $item->id, 'item_id' => $item->id]) }}" method="POST" class="text-center">
+              <form action="{{ route('carts.items.update', ['cart' => auth()->user()->cart->id, 'item' => $item, 'quantity' => ($item->pivot->quantity * -1)]) }}" method="POST" class="text-center">
                 @csrf
-                @method('DELETE')
+                @method('PUT')
 
                 <div class="m-0">
                   <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-700 rounded-lg">Remove</button>
@@ -33,15 +33,15 @@
                 <p for="quantity" class="">Quantity: {{ $item->pivot->quantity }}</p>
               </div>
               <div class="flex">
-                <form action="{{ route('carts.items.update', ['cart' => auth()->user()->cart->id, 'item' => $item->id, 'action' => 'increase', 'item_id' => $item->id]) }}" method="POST" class="text-center">
+                <form action="{{ route('carts.items.update', ['cart' => auth()->user()->cart->id, 'item' => $item, 'quantity' => 1]) }}" method="POST" class="text-center">
                   @csrf
-                  @method('PATCH')
+                  @method('PUT')
                   <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-700 rounded-lg">Increase</button>
                 </form>
 
-                <form action="{{ route('carts.items.update', ['cart' => auth()->user()->cart->id, 'item' => $item->id, 'action' => 'decrease', 'item_id' => $item->id]) }}" method="POST" class="text-center">
+                <form action="{{ route('carts.items.update', ['cart' => auth()->user()->cart->id, 'item' => $item, 'quantity' => -1]) }}" method="POST" class="text-center">
                   @csrf
-                  @method('PATCH')
+                  @method('PUT')
                   <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-700 rounded-lg">Decrease</button>
                 </form>
               </div>
@@ -52,7 +52,6 @@
           <img src="{{ $item->image }}" alt="item-img" class="mx-auto">
         </div>
       </div>
-
 
       @empty
 
