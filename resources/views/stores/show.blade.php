@@ -17,9 +17,6 @@
           <div>
             <h2 class="font-bold">{{ $item->name }}</h2>
             <p class="mb-2">{{ $item->description }}</p>
-            @foreach ($item->tags as $tag)
-            <a class="border border-black px-1 bg-orange-500 hover:bg-orange-700 mr-2" href="{{ route('stores.index', ['tag' => $tag->name]) }}">{{ $tag->name }}</a>
-            @endforeach
           </div>
           @can('manager')
           <div>
@@ -33,16 +30,16 @@
             <h4>Available: {{ $item->limit }}</h4>
           </div>
           <div>
-            <div class="mb-2">
-              <span class="mr-1 text-lg">Quantity:</span>
-              <select name="quantity" id="quantity" class="px-1 border border-grey-400">
-                @for ($i = 1; $i <= $item->limit; $i++)
-                  <option value="{{ $i }}">{{ $i }}</option>
-                  @endfor
-              </select>
-            </div>
-            <form action="" method="POST" class="text-center">
+            <form action="{{ route('carts.items.store', ['cart' => auth()->user()->cart->id, 'item_id' => $item->id]) }}" method="POST" class="text-center">
               @csrf
+              <div class="mb-2">
+                <span class="mr-1 text-lg">Quantity:</span>
+                <select name="quantity" id="quantity" class="px-1 border border-grey-400">
+                  @for ($i = 1; $i <= $item->limit; $i++)
+                    <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                </select>
+              </div>
               <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-700 rounded-lg">Add to Cart</button>
             </form>
           </div>

@@ -51,8 +51,8 @@
       </header>
       @if (auth()->check())
       <div class="mx-auto text-center mt-4 border border-black bg-gray-300 w-1/2">
-        <h1>Logged in as {{ auth()->user()->name }}</h1>
-        <h3>You're authorized to <br>
+        <h1>Logged in as '{{ auth()->user()->name }}'</h1>
+        <h3>Authorization Privileges:<br>
           @foreach (auth()->user()->roles as $role)
           {{ $role->label }}<br>
           @endforeach

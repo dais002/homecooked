@@ -3,18 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ItemRequest;
-use App\Http\Resources\ItemResource;
 use App\Item;
 use App\Store;
 
 class StoreItemController extends Controller
 {
-
-    public function index(Store $store)
-    {
-        $items = $store->items;
-        return ItemResource::collection($items);
-    }
 
     public function store(Store $store, ItemRequest $request)
     {
@@ -22,15 +15,6 @@ class StoreItemController extends Controller
         return view('stores.show', [
             'store' => $store,
         ]);
-
-        // $storeItem = $store->items()->create($request->validated());
-        // return new ItemResource($storeItem);
-    }
-
-    public function show(Store $store, Item $item)
-    {
-        $storeItem = $store->items()->findOrFail($item->id);
-        return new ItemResource($storeItem);
     }
 
     public function create(Store $store)
@@ -70,6 +54,6 @@ class StoreItemController extends Controller
     {
         $storeItem = $store->items()->findOrFail($item->id);
         $storeItem->delete();
-        return response()->noContent();
+        return back();
     }
 }

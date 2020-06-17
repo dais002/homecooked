@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
 
         // global before all check if user has rights
         Gate::before(function ($user, $role) {
-            if ($user->role()->contains($role)) {
+            if ($user->role->contains($role)) {
                 return true;
             }
         });

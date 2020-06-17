@@ -1,9 +1,4 @@
 <x-app>
-  <?php
-  echo "Store: " . $store . "<br>";
-  echo "Item: " . $item . "<br>";
-  echo "Patch path: " . "/stores/$store->id/items/$item->id";
-  ?>
   <div class="container w-1/2 mx-auto p-10 bg-blue-200 rounded-lg">
     <h1 class="mb-4 text-center font-bold">Edit Item {{ $item->name }}</h1>
     <form action="{{ route('stores.items.update', ['store' => $store, 'item' => $item]) }}" method="POST" enctype="multipart/form-data">

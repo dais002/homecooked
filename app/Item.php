@@ -16,6 +16,6 @@ class Item extends Model
 
     public function carts()
     {
-        return $this->belongsToMany(Cart::class);
+        return $this->belongsToMany(Cart::class)->withTimestamps();
     }
 }
