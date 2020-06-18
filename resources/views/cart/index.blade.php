@@ -60,7 +60,7 @@
       </div>
       @endforelse
 
-      @if (auth()->user()->cartTotal !== 0)
+      @if (auth()->user()->cart->cartTotal !== 0)
       <div>
         <form action="{{ route('order.store', ['cart' => auth()->user()->cart->id]) }}" method="POST" class="text-center">
           @csrf

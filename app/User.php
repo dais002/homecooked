@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Billable;
 
     protected $fillable = [
         'name', 'email', 'password',
@@ -30,11 +31,6 @@ class User extends Authenticatable
             $cart = $this->carts()->create();
         };
         return $cart;
-    }
-
-    public function getCartTotalAttribute()
-    {
-        return $this->cart->items->pluck('pivot')->pluck('quantity')->sum();
     }
 
     public function carts()
@@ -71,8 +67,13 @@ class User extends Authenticatable
         $this->roles()->sync($role, false);
     }
 
-    public function getRoleAttribute()
+    public function addresses()
     {
-        return $this->roles->pluck('name');
+        return $this->morphToMany(Address::class, 'owner');
+    }
+
+    public function phone_numbers()
+    {
+        return $this->morphToMany(PhoneNumber::class, 'owner');
     }
 }

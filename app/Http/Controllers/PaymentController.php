@@ -3,25 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laravel\Cashier\Billable;
 
-class RoleUserController extends Controller
+class PaymentController extends Controller
 {
+
+    public function index()
+    {
+        $availablePlans = [
+            'standard' => 'standard',
+            'premium' => 'premium',
+        ];
+
+        return view('payment.index', [
+            'intent' => auth()->user()->createSetupIntent(),
+            'plans' => $availablePlans,
+        ]);
+    }
+
     /**
-     * Display a listing of the resource.
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
@@ -34,6 +43,17 @@ class RoleUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         //
     }

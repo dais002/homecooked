@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        // Item::class => ItemPolicy::class,
     ];
 
     /**
@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
 
         // global before all check if user has rights
         Gate::before(function ($user, $role) {
-            if ($user->role->contains($role)) {
+            if ($user->roles->pluck('name')->contains($role)) {
                 return true;
             }
         });

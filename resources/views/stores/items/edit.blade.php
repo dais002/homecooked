@@ -39,7 +39,7 @@
         <button type="submit" class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500 mr-4">
           Submit
         </button>
-        <a href="{{ route('stores.index') }}" class="hover:underline">Cancel</a>
+        <a href="{{ URL::previous() }}" class="hover:underline">Cancel</a>
       </div>
     </form>
   </div>

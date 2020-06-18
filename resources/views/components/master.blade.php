@@ -12,12 +12,16 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -68,6 +72,8 @@
   </div>
 
   <script src="http://unpkg.com/turbolinks"></script>
+
+  @yield('js')
 
 </body>
 
