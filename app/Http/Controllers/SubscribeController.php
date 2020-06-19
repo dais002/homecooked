@@ -7,6 +7,21 @@ use Laravel\Cashier\Billable;
 
 class SubscribeController extends Controller
 {
+
+
+    public function index()
+    {
+        $availablePlans = [
+            'standard' => 'standard',
+            'premium' => 'premium',
+        ];
+
+        return view('subscribe.index', [
+            'intent' => auth()->user()->createSetupIntent(),
+            'plans' => $availablePlans,
+        ]);
+    }
+
     public function update(Request $request, $id)
     {
         dd($request);
@@ -20,18 +35,6 @@ class SubscribeController extends Controller
         $user->newSubscription('monthly', '$planId')->create($paymentMethod);
 
         return response(['status' => 'success']);
-    }
-
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
     }
 
     /**

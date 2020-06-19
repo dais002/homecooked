@@ -55,25 +55,13 @@ class User extends Authenticatable
         return 'http://gravatar.com/avatar/' . $hash;
     }
 
-    public function roles()
+    public function address()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->morphOne('App\Address', 'owner');
     }
 
-    // assign role to
-    public function assignRole($role)
+    public function phone_number()
     {
-        // add new records if necessary, don't drop anything
-        $this->roles()->sync($role, false);
-    }
-
-    public function addresses()
-    {
-        return $this->morphToMany(Address::class, 'owner');
-    }
-
-    public function phone_numbers()
-    {
-        return $this->morphToMany(PhoneNumber::class, 'owner');
+        return $this->morphOne(PhoneNumber::class, 'owner');
     }
 }

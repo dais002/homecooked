@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::apiResource('stores', 'StoreController')->except(['edit', 'update']); // index, show, destroy 
+    Route::resource('stores', 'StoreController')->except(['edit', 'update']); // index, show, destroy, create, store
     Route::resource('stores.items', 'StoreItemController')->except(['index', 'show']); // create, store, edit, update, destroy
     // Route::apiResource('roles.users', 'RoleUserController')->except(['index', 'show', 'destroy']); // store, patch
 
@@ -17,8 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::put('carts/{cart}/items/{item}', 'CartItemController@update')->name('carts.items.update');
     // Route::apiResource('carts.items', 'CartItemController')->except(['index', 'show']); // store, patch, destroy
     Route::apiResource('order', 'OrderController')->except(['show', 'update', 'destroy']); // index, store
-    Route::resource('payment', 'PaymentController');
-    Route::put('subscribe', 'SubscribeController@update')->name('subscribe');
+    Route::resource('subscribe', 'SubscribeController');
 });
 
 /*

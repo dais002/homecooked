@@ -1,63 +1,81 @@
 <x-app>
-  <div class="mx-auto text-center mb-6">
-    <h1 class="mb-4">Welcome to {{ $store->name }}</h1>
-    <img src="{{ $store->logo }}" alt="store-logo" class="mb-6 mx-auto">
-    @can ('manager')
-    <div class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded-full w-1/2 mx-auto">
-      <a href="{{ route('stores.items.create', $store->id) }}">Add Item</a>
+
+  <div class="mx-auto text-center flex flex-col items-center justify-between p-6">
+    <div>
+      <img src="{{ $store->logo }}" alt="store-logo" class="my-6 mx-auto" style="border-radius: 50%; width: 200px; height: 200px;">
     </div>
-    @endcan
+    <h1 class="border-b-8 border-button tracking-wider">{{ $store->name }}</h1>
+    <div class="font-oxygen max-w-2xl">
+      <h2 class="mt-4">{{ $store->description }}</h2>
+      <div class="flex flex-col md:flex-row items-center justify-between text-lg text-description mt-4 mb-4">
+        <p>{{ auth()->user()->name }}</p>
+        <p>Los Angeles, CA</p>
+        <p>{{ auth()->user()->email }}</p>
+      </div>
+    </div>
   </div>
 
-  <div class="container w-2/3 mx-auto">
+  @can ('addItem', $store)
+  <div class="flex justify-end mx-auto mb-4 w-3/4 max-w-4xl">
+    <button class="px-4 py-2 bg-blue-700 rounded-lg text-white text-lg text-right mr-4 xl:mr-0 tracking-wider hover:bg-blue-500">
+      <a href="{{ route('stores.items.create', $store->id) }}">Add Item</a>
+    </button>
+  </div>
+  @endcan
+
+  <div class="container w-3/4 max-w-5xl mx-auto">
     @forelse ($store->items as $item)
-    <div class="flex justify-between bg-red-100 border border-black border-dotted mb-4">
-      <div class="p-3 flex-1 flex flex-col justify-between">
-        <div class="flex justify-between">
+    <div class="flex flex-col lg:flex-row justify-between bg-white mb-6 rounded-all p-6">
+
+      <div class="flex w-full lg:w-3/4">
+        <div class="flex-none">
+          <img src="{{ $item->image }}" alt="item-img" class="mx-auto rounded-all" style="width: 200px; height: 200px;">
+        </div>
+        <div class="ml-4 p-2 flex flex-col justify-between">
           <div>
-            <h2 class="font-bold">{{ $item->name }}</h2>
-            <p class="mb-2">{{ $item->description }}</p>
+            <p class="font-bold text-2xl lg:text-3xl">{{ $item->name }}</p>
+            <p class="font-oxygen text-sm md:text-md lg:text-lg">{{ $item->description }}</p>
           </div>
-          @can('manager')
-          <div class="flex">
-            <div>
-              <a class="flex items-center bg-gray-500 hover:bg-gray-700 text-lg font-bold py-2 px-4 border border-black rounded-full" href="{{ route('stores.items.edit', ['store' => $store, 'item' => $item]) }}">Edit Item</a>
-            </div>
+          @can('update', $item)
+          <div class="flex text-center">
+            <button class="px-2 py-1 lg:px-4 lg:py-2 bg-gray-500 hover:bg-gray-700 text-white text-sm lg:text-lg rounded-lg mr-6 tracking-wider">
+              <a href="{{ route('stores.items.edit', ['store' => $store, 'item' => $item]) }}">Edit Item</a>
+            </button>
             <div>
               <form action="{{ route('stores.items.destroy', ['store' => $store->id, 'item' => $item->id]) }}" method="POST" class="text-center">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="bg-red-500 hover:bg-red-700 text-lg font-bold py-2 px-4 border border-black rounded-full">Delete Item</button>
+                <button type="submit" class="px-2 py-1 lg:px-4 lg:py-2 bg-danger text-white text-sm lg:text-lg mr-6 tracking-wider hover:bg-red-700">Delete Item</button>
               </form>
             </div>
           </div>
-
           @endcan
         </div>
-        <div class="flex justify-between">
-          <div>
-            <h3 class="mb-2">Price: ${{ number_format($item->price / 100, 2, '.', ',') }}</h3>
-            <h4>Available: {{ $item->limit }}</h4>
-          </div>
-          <div>
-            <form action="{{ route('carts.items.update', ['cart' => auth()->user()->cart, 'item' => $item]) }}" method="POST" class="text-center">
-              @csrf
-              @method('PUT')
-              <div class="mb-2">
-                <span class="mr-1 text-lg">Quantity:</span>
-                <select name="quantity" id="quantity" class="px-1 border border-grey-400">
-                  @for ($i = 1; $i <= $item->limit; $i++)
-                    <option value="{{ $i }}">{{ $i }}</option>
-                    @endfor
-                </select>
-              </div>
-              <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-700 rounded-lg">Add to Cart</button>
-            </form>
-          </div>
-        </div>
       </div>
-      <div class="p-2">
-        <img src="{{ $item->image }}" alt="item-img" class="mx-auto">
+
+      <div class="p-2 w-2/3 mx-auto lg:w-1/4 flex flex-row-reverse lg:flex-col flex-none justify-around lg:justify-between">
+        <div class="flex flex-col-reverse lg:flex-col justify-around">
+          <h2 class="font-bold mb-2 lg:mb-4">${{ number_format($item->price / 100, 2, '.', ',') }}</h2>
+          <p class="font-oxygen text-sm md:text-lg">Available: {{ $item->limit }}</p>
+        </div>
+        <div class="flex flex-col justify-between">
+          <form action="{{ route('carts.items.update', ['cart' => auth()->user()->cart, 'item' => $item]) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="mb-2 lg:mb-4 font-oxygen">
+              <span class="mr-1 text-sm md:text-lg">Quantity:</span>
+              <select name="quantity" id="quantity" class="px-1 text-sm md:text-lg border border-grey-400">
+                @for ($i = 1; $i <= $item->limit; $i++)
+                  <option value="{{ $i }}">{{ $i }}</option>
+                  @endfor
+              </select>
+            </div>
+            <button type="submit" class="px-4 py-2 bg-btn-green rounded-lg text-white text-lg hover:bg-blue-700">Add to Cart</button>
+          </form>
+
+        </div>
+
+
       </div>
     </div>
     @empty

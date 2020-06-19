@@ -24,4 +24,29 @@ h5 {
 h6 {
   font-size: 0.67em;
 }
+
+.navcolor {
+  background-color: #3d3f5d;
+}
+
+.navtextcolor {
+  color: #f3f3f3;
+}
+
+.rolecolor {
+  background: #97bfa2;
+}
+
+.pagecolor {
+  background: rgba(151, 191, 162, 0.2);
+}
+
+.button-red {
+  background: #eb5757;
+  border-radius: 6px;
+}
+
+nav {
+  background-image: url("/images/main-logo.svg");
+}
 /*# sourceMappingURL=app.css.map */
