@@ -11,12 +11,12 @@
 Authentication:
 -  all users are required to login and defaulted to guest role
 
-Platform Authorization: 
-- admin - full access
+Platform Global Authorization: 
+- admin - full access to all stores and items
 - manager - can perform CRUD operations on store items
 - guest - customer who can only purchase
 
-Store Owner Authorization:
+Subscription (Store Owner) Authorization:
 - store owners can only modify items within their own store
 
 Subscription Service:
@@ -25,5 +25,3 @@ Subscription Service:
 Upgrades:
 - standard tier users can upgrade to premium option
 - customers will be asked to upgrade to store owners and have options to select service
-
-
