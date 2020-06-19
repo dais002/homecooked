@@ -22,4 +22,14 @@ class Store extends Model
     {
         return $this->hasMany(Item::class);
     }
+
+    public function addresses()
+    {
+        return $this->morphToMany(Address::class, 'owner');
+    }
+
+    public function phone_numbers()
+    {
+        return $this->morphToMany(PhoneNumber::class, 'owner');
+    }
 }

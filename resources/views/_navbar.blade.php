@@ -11,6 +11,6 @@
     </form>
   </li>
   <li class="">
-    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-700 rounded" href="{{ route('cart.index') }}">Cart ({{ auth()->user()->cartTotal }})</a>
+    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-700 rounded" href="{{ route('cart.index') }}">Cart ({{ auth()->user()->cart->cartTotal }})</a>
   </li>
 </ul>

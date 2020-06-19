@@ -22,4 +22,9 @@ class Cart extends Model
     {
         return $this->belongsToMany(Item::class)->withPivot("quantity")->withTimestamps();
     }
+
+    public function getCartTotalAttribute()
+    {
+        return $this->items->pluck('pivot')->pluck('quantity')->sum();
+    }
 }
