@@ -1,6 +1,6 @@
 <x-master>
-    <section class="px-8">
-        <main class="container mx-auto">
+    <section class="">
+        <main class="container max-w-screen-xlg mx-auto bg-app">
             {{ $slot ?? '' }}
         </main>
     </section>

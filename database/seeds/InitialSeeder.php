@@ -16,13 +16,21 @@ class InitialSeeder extends Seeder
         // create users for each role
         factory(App\User::class)->create([
             'name' => 'admin',
+            'role' => 'admin',
             'email' => 'admin@test.com',
             'password' => Hash::make('password'),
         ]);
 
         factory(App\User::class)->create([
             'name' => 'manager',
+            'role' => 'manager',
             'email' => 'manager@test.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        factory(App\User::class)->create([
+            'name' => 'store owner',
+            'email' => 'owner@test.com',
             'password' => Hash::make('password'),
         ]);
 
@@ -31,14 +39,6 @@ class InitialSeeder extends Seeder
             'email' => 'guest@test.com',
             'password' => Hash::make('password'),
         ]);
-
-        // create specific roles
-        $adminRole = App\Role::create(['name' => 'admin', 'label' => 'Administrator']); // can modify stores and items
-        $managerRole = App\Role::create(['name' => 'manager', 'label' => 'Store Manager']); // can modify items
-
-        // attach created roles to users
-        $admin = App\User::find(1)->roles()->attach($adminRole);
-        $manager = App\User::find(2)->roles()->attach($managerRole);
 
         // create stores
         $stores = factory(App\Store::class, 9)->create();

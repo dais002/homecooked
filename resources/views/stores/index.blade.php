@@ -1,30 +1,50 @@
 <x-app>
-  <div class="mx-auto max-w-screen-lg grid grid-cols-2 gap-4 border border-gray-300 rounded-lg">
-    @foreach ($stores as $store)
-    <div class="border-2 border-solid">
-      <a href="{{ route('stores.show', $store->id) }}">
-        <div class="m-2 text-center">
-          <img src="{{ $store->logo }}" alt="" class="mx-auto" style="width: 170px; height: 170px;">
-          <div class="flex-1">
-            <h5 class="font-bold">
-              {{ $store->name }}
-            </h5>
+  <section class="bg-searchcontainer">
+    @include ('_search')
+  </section>
+  <div class="mx-12 md:mx:24 lg:mx-40">
+    <div class="mt-16 mb-8 flex justify-between">
+      <h1 class="border-b-8 border-button tracking-wider font-bold">LOCAL CHEFS</h1>
+      @if (auth()->user()->role === 'admin' || auth()->user()->role === 'manager')
+      <div class="text-right">
+        <h2>{{ auth()->user()->role }} privileges</h2>
+      </div>
+      @endif
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-2 xlg:grid-cols-3 gap-4 md:gap-12 xlg:gap-8 rounded-lg justify-center">
+      @foreach ($stores as $store)
+      <div class="">
+        <a href="{{ route('stores.show', $store->id) }}">
+          <img src="{{ $store->logo }}" alt="store-logo" class="object-fit h-64 w-full rounded-img">
+        </a>
+
+        <div class="h-40 p-4 flex flex-col justify-between bg-storecard rounded-storetext">
+          <a href="{{ route('stores.show', $store->id) }}">
+            <h2 class="font-bold mb-2">{{ $store->name }}</h2>
+            <p class="font-oxygen text-md">{{ $store->description }}</p>
+          </a>
+          <div class="flex justify-between items-center">
+            <p>Los Angeles, CA</p>
             @can ('admin', $store)
-            <form action="stores/{{ $store->id }}" method="POST">
-              @csrf
-              @method('DELETE')
-              <button type="submit" class="px-4 py-2 bg-red-100 border border-red-500 text-s font-bold">
-                Delete Store
-              </button>
-            </form>
+            <div>
+              <form action="#" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="px-2 py-1 bg-danger text-white text-sm">
+                  Delete Store
+                </button>
+              </form>
+            </div>
             @endcan
           </div>
         </div>
-      </a>
+
+      </div>
+      @endforeach
     </div>
-    @endforeach
-  </div>
-  <div>
-    {{ $stores->links() }}
+    <div>
+      {{ $stores->links() }}
+    </div>
+
   </div>
 </x-app>

@@ -1,7 +1,21 @@
 <x-app>
   <div class="w-1/2 rounded overflow-hidden shadow-lg mx-auto">
     <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2 text-center">Subscribe</div>
+      <div class="text-center mb-4">
+        <h2 class="font-bold mb-2">Share your home cookin'!</h2>
+        <hr>
+
+        <h3 class="mt-2">Delight your local neighbors with your home creations.</h3>
+        <h3 class="mb-2">They win. You win.</h3>
+        <hr>
+
+        <h3 class="mt-4">Special Starter Promotion</h3>
+
+        <h1 class="font-bold mb-4 mt-4">$50/month</h1>
+        <h3 class="mb-2">Run your own store, share up to 3 items!</h3>
+        <h3>Sign Up below:</h3>
+
+      </div>
 
       <div class="flex justify-around m-0 ">
         <select name="plan" id="subscription" class="w-full border border-gray-300 px-4 py-2 mb-4">
@@ -17,7 +31,7 @@
       <div id="card-element" class="border border-gray-300 px-4 py-2"></div>
     </div>
     <div class="px-6 py-4">
-      <button id="card-button" class="inline-block bg-gray-200 rounded-lg px-3 py-1 text-sm font-semibold text-gray-700 mr-2" data-secret="{{ $intent->client_secret }}">
+      <button id="card-button" class="inline-block bg-blue-200 rounded-lg px-4 py-2 text-sm font-semibold text-blue-700 mr-2" data-secret="{{ $intent->client_secret }}">
         Subscribe
       </button>
     </div>
@@ -25,7 +39,9 @@
 
   @section('js')
   <script>
+    console.log('testing');
     window.addEventListener('load', function() {
+      console.log('testing inside event listener');
 
       const stripe = Stripe('{{env("STRIPE_KEY")}}');
 

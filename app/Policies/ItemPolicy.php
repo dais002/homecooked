@@ -10,89 +10,20 @@ class ItemPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function viewAny(User $user)
+    public function before(User $user)
     {
-        //
+        if ($user->role === 'manager') {
+            return true;
+        }
     }
 
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Item  $item
-     * @return mixed
-     */
-    public function view(User $user, Item $item)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function create(User $user)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Item  $item
-     * @return mixed
-     */
     public function update(User $user, Item $item)
     {
-        if ($item->store->users()->pluck('user_id')->contains($user->id)) {
-            return true;
-        }
+        return $item->store->users()->pluck('user_id')->contains($user->id);
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Item  $item
-     * @return mixed
-     */
     public function delete(User $user, Item $item)
     {
-        if ($item->store->users()->pluck('user_id')->contains($user->id)) {
-            return true;
-        }
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Item  $item
-     * @return mixed
-     */
-    public function restore(User $user, Item $item)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Item  $item
-     * @return mixed
-     */
-    public function forceDelete(User $user, Item $item)
-    {
-        //
+        return $item->store->users()->pluck('user_id')->contains($user->id);
     }
 }

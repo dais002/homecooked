@@ -23,13 +23,13 @@ class Store extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function addresses()
+    public function address()
     {
-        return $this->morphToMany(Address::class, 'owner');
+        return $this->morphOne('App\Address', 'owner');
     }
 
-    public function phone_numbers()
+    public function phone_number()
     {
-        return $this->morphToMany(PhoneNumber::class, 'owner');
+        return $this->morphOne(PhoneNumber::class, 'owner');
     }
 }
