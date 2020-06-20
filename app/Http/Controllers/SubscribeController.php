@@ -2,39 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Plan;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Billable;
 
 class SubscribeController extends Controller
 {
 
-
     public function index()
     {
-        $availablePlans = [
-            'standard' => 'standard',
-            'premium' => 'premium',
-        ];
-
         return view('subscribe.index', [
             'intent' => auth()->user()->createSetupIntent(),
-            'plans' => $availablePlans,
         ]);
-    }
-
-    public function update(Request $request, $id)
-    {
-        dd($request);
-        $user = auth()->user();
-        $paymentMethod = $request->payment_method;
-
-        dd($request, $user, $paymentMethod, $id);
-
-        // register subscription product and grab planId
-        // $planId = $request->plan;
-        $user->newSubscription('monthly', '$planId')->create($paymentMethod);
-
-        return response(['status' => 'success']);
     }
 
     /**
@@ -47,15 +26,9 @@ class SubscribeController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        dd($request);
+        //
     }
 
     /**
@@ -80,6 +53,17 @@ class SubscribeController extends Controller
         //
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
     /**
      * Remove the specified resource from storage.

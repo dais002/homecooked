@@ -11,13 +11,13 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('stores', 'StoreController')->except(['edit', 'update']); // index, show, destroy, create, store
     Route::resource('stores.items', 'StoreItemController')->except(['index', 'show']); // create, store, edit, update, destroy
-    // Route::apiResource('roles.users', 'RoleUserController')->except(['index', 'show', 'destroy']); // store, patch
 
     Route::get('cart', 'CartController@index')->name('cart.index'); // index
     Route::put('carts/{cart}/items/{item}', 'CartItemController@update')->name('carts.items.update');
-    // Route::apiResource('carts.items', 'CartItemController')->except(['index', 'show']); // store, patch, destroy
     Route::apiResource('order', 'OrderController')->except(['show', 'update', 'destroy']); // index, store
-    Route::resource('subscribe', 'SubscribeController');
+
+    Route::get('subscribe', 'SubscribeController@index')->name('subscribe.index');
+    Route::post('payment', 'PaymentController@store')->name('payment.store');
 });
 
 /*

@@ -2,82 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Plan;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Billable;
 
 class PaymentController extends Controller
 {
-
-    public function index()
-    {
-        $availablePlans = [
-            'standard' => 'standard',
-            'premium' => 'premium',
-        ];
-
-        return view('payment.index', [
-            'intent' => auth()->user()->createSetupIntent(),
-            'plans' => $availablePlans,
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request)
     {
-        //
-    }
+        // this never runs when the axios.post request is triggered... but WHYYYYYY
+        dd($request);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $user = auth()->user();
+        $paymentMethod = $request->payment_method;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        // plan ID could be 'standard' or API key
+        $planId = 'price_1GwCl5IOPhNaXwPAjftecbYZ';
+        // $planId = 'standard';
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $user->newSubscription('primary', $planId)
+            ->create($paymentMethod);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return 'Subscription Created';
+
+        // $user = auth()->user();
+        // $stripe = Stripe::make(env('STRIPE_SECRET')); // used Stripe secret key, not Publishable key
+        // $charge = $stripe->charges()->create([
+        //     'amount'   => 50,
+        //     'currency' => 'USD',
+        //     'source' => $request->stripeToken,
+        //     'receipt_email' => $user->email,
+        // ]);
+
+        // return "Payment Created";
+
+
+        // $user = $request->user();
+        // $paymentMethodID = $request->payment_method;
+
+        // if ($user->stripe_id == null) {
+        //     $user->createAsStripeCustomer();
+        // }
+
+        // $user->addPaymentMethod($paymentMethodID);
+        // $user->updateDefaultPaymentMethod($paymentMethodID);
+
+        // return response()->json(null, 204);
     }
 }

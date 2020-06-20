@@ -7,10 +7,10 @@
     <h1 class="border-b-8 border-button tracking-wider">{{ $store->name }}</h1>
     <div class="font-oxygen max-w-2xl">
       <h2 class="mt-4">{{ $store->description }}</h2>
-      <div class="flex flex-col md:flex-row items-center justify-between text-lg text-description mt-4 mb-4">
-        <p>{{ auth()->user()->name }}</p>
-        <p>Los Angeles, CA</p>
-        <p>{{ auth()->user()->email }}</p>
+      <div class="flex flex-col md:flex-row items-center justify-between text-lg text-description mt-4 mb-2">
+        <p class="sm:pb-2">{{ auth()->user()->name }}</p>
+        <p class="sm:pb-2">Los Angeles, CA</p>
+        <p class="sm:pb-2">{{ auth()->user()->email }}</p>
       </div>
     </div>
   </div>
@@ -31,14 +31,14 @@
         <div class="flex-none">
           <img src="{{ $item->image }}" alt="item-img" class="mx-auto rounded-all" style="width: 200px; height: 200px;">
         </div>
-        <div class="ml-4 p-2 flex flex-col justify-between">
+        <div class="ml-2 lg:ml-4 p-2 flex flex-col justify-between">
           <div>
             <p class="font-bold text-2xl lg:text-3xl">{{ $item->name }}</p>
             <p class="font-oxygen text-sm md:text-md lg:text-lg">{{ $item->description }}</p>
           </div>
           @can('update', $item)
           <div class="flex text-center">
-            <button class="px-2 py-1 lg:px-4 lg:py-2 bg-gray-500 hover:bg-gray-700 text-white text-sm lg:text-lg rounded-lg mr-6 tracking-wider">
+            <button class="px-2 py-1 lg:px-4 lg:py-2 bg-gray-500 hover:bg-gray-700 text-white text-sm lg:text-lg rounded-lg mr-2 lg:mr-6 tracking-wider">
               <a href="{{ route('stores.items.edit', ['store' => $store, 'item' => $item]) }}">Edit Item</a>
             </button>
             <div>
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <div class="p-2 w-2/3 mx-auto lg:w-1/4 flex flex-row-reverse lg:flex-col flex-none justify-around lg:justify-between">
+      <div class="p-2 w-2/3 mx-auto mt-4 lg:mt-0 lg:w-1/4 flex flex-row-reverse lg:flex-col flex-none justify-between md:justify-around lg:justify-between">
         <div class="flex flex-col-reverse lg:flex-col justify-around">
           <h2 class="font-bold mb-2 lg:mb-4">${{ number_format($item->price / 100, 2, '.', ',') }}</h2>
           <p class="font-oxygen text-sm md:text-lg">Available: {{ $item->limit }}</p>

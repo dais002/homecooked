@@ -12,8 +12,9 @@
       @endif
     </div>
     <div class="grid md:grid-cols-2 lg:grid-cols-2 xlg:grid-cols-3 gap-4 md:gap-12 xlg:gap-8 rounded-lg justify-center">
+
       @foreach ($stores as $store)
-      <div class="">
+      <div>
         <a href="{{ route('stores.show', $store->id) }}">
           <img src="{{ $store->logo }}" alt="store-logo" class="object-fit h-64 w-full rounded-img">
         </a>
@@ -38,9 +39,9 @@
             @endcan
           </div>
         </div>
-
       </div>
       @endforeach
+
     </div>
     <div>
       {{ $stores->links() }}
