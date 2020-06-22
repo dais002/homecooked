@@ -11,9 +11,9 @@
   <title>{{ config('app.name', 'Get Home Cooked!') }}</title>
 
   <!-- Scripts -->
-  <script src="https://js.stripe.com/v3/"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="http://unpkg.com/turbolinks" defer></script>
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="https://js.stripe.com/v3/"></script>
   <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
 
@@ -35,9 +35,6 @@
     </header>
     {{ $slot }}
   </div>
-
-
-  @yield('js')
 
 </body>
 
