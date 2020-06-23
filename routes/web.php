@@ -16,9 +16,10 @@ Route::middleware('auth')->group(function () {
     Route::put('carts/{cart}/items/{item}', 'CartItemController@update')->name('carts.items.update');
     Route::apiResource('order', 'OrderController')->except(['show', 'update', 'destroy']); // index, store
 
-    Route::get('subscribe', 'SubscribeController@index')->name('subscribe.index');
-    Route::post('payment', 'PaymentController@store')->name('payment.store');
+    Route::apiResource('subscribe', 'SubscribeController')->except(['show', 'update', 'destroy']);
 });
+
+Route::post('stripe/webhook', '\App\Http\Controllers\WebhookController@handleWebhook');
 
 /*
 Admin/Manager Actions -

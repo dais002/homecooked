@@ -11,7 +11,7 @@
       </div>
       @endif
     </div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-2 xlg:grid-cols-3 gap-4 md:gap-12 xlg:gap-8 rounded-lg justify-center">
+    <div class="grid md:grid-cols-2 lg:grid-cols-2 xlg:grid-cols-3 gap-4 md:gap-12 xlg:gap-8 rounded-lg justify-center pb-12">
 
       @foreach ($stores as $store)
       <div>
@@ -28,7 +28,7 @@
             <p>Los Angeles, CA</p>
             @can ('admin', $store)
             <div>
-              <form action="#" method="POST">
+              <form action="{{ route('stores.destroy', ['store' => $store]) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="px-2 py-1 bg-danger text-white text-sm">

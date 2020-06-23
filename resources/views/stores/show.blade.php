@@ -23,7 +23,7 @@
   </div>
   @endcan
 
-  <div class="container w-3/4 max-w-5xl mx-auto">
+  <div class="container w-3/4 max-w-5xl mx-auto pb-6">
     @forelse ($store->items as $item)
     <div class="flex flex-col lg:flex-row justify-between bg-white mb-6 rounded-all p-6">
 

@@ -25,6 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'string|max:255|required',
+            'description' => 'string|max:255',
             'logo' => 'string|max:255',
         ];
     }
