@@ -21,4 +21,10 @@ class StorePolicy
     {
         return $user->stores->contains($store);
     }
+
+    public function addStore(User $user)
+    {
+        // refactor - basically want to say subscribed, and doesn't already have a store.
+        return $user->subscribed('primary') && $user->stores->first() !== null;
+    }
 }

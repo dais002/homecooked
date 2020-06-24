@@ -1,7 +1,5 @@
 <x-master>
-    <section class="">
-        <main class="container max-w-screen-xlg mx-auto bg-app">
-            {{ $slot ?? '' }}
-        </main>
-    </section>
+    <main class="container max-w-screen-xlg mx-auto bg-app flex-grow">
+        {{ $slot ?? '' }}
+    </main>
 </x-master>

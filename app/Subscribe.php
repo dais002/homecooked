@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Plan extends Model
+class Subscribe extends Model
 {
     protected $fillable = ['name', 'stripe_plan', 'cost', 'description'];
 }

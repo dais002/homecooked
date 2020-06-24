@@ -7,7 +7,7 @@
             <div class="mx-auto px-12 py-8 rounded-all border border-white bg-storecard tracking-wider max-w-sm">
 
                 <div class="flex justify-center font-bold tracking-widest text-center">
-                    <div class="text-center text-2xl border-b-8 border-button">&nbsp;{{ __('LOGIN') }}&nbsp;</div>
+                    <div class="text-center text-2xl border-b-8 border-button">{{ __('LOGIN') }}</div>
                 </div>
 
                 <form method="POST" action="{{ route('login') }}">

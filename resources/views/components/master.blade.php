@@ -12,8 +12,8 @@
 
   <!-- Scripts -->
   <script src="http://unpkg.com/turbolinks" defer></script>
-  <script src="{{ asset('js/app.js') }}"></script>
-  <script src="https://js.stripe.com/v3/"></script>
+  <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="https://js.stripe.com/v3/" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
 
@@ -26,14 +26,26 @@
 </head>
 
 <body class="font-body">
-  <div id="app">
+  <div id="app" class="flex flex-col min-h-screen">
 
     <header class="container mx-auto max-w-screen-xlg">
       @if (auth()->check())
       @include ('_navbar')
       @endif
+
     </header>
     {{ $slot }}
+
+
+    <footer class="container mx-auto max-w-screen-xlg bg-nav">
+      @if (auth()->check())
+      <div class="flex justify-center items-center">
+        <a href="{{ route('stores.index') }}">
+          <img class="w-48 h-24 object-fill my-4" src="/images/logo.svg" alt="logo">
+        </a>
+      </div>
+      @endif
+    </footer>
   </div>
 
 </body>

@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html {
+  font-family: "Oswald", sans-serif;
+}
+
 h1 {
   font-size: 2em;
 }
@@ -25,28 +29,62 @@ h6 {
   font-size: 0.67em;
 }
 
-.navcolor {
-  background-color: #3d3f5d;
-}
-
-.navtextcolor {
+.text-nav {
   color: #f3f3f3;
 }
 
-.rolecolor {
-  background: #97bfa2;
+.bg-nav {
+  background-color: #3d3f5d;
 }
 
-.pagecolor {
-  background: rgba(151, 191, 162, 0.2);
+.bg-btn-green {
+  background-color: #97bfa2;
 }
 
-.button-red {
-  background: #eb5757;
+.bg-searchcontainer {
+  background-color: #f3f3f3;
+}
+
+.font-oxygen {
+  font-family: "Oxygen", sans-serif;
+}
+
+.bg-app {
+  background-color: rgba(151, 191, 162, 0.2);
+}
+
+.bg-storecard {
+  background-color: #f7f7f7;
+}
+
+.bg-danger {
+  background-color: #eb5757;
   border-radius: 6px;
 }
 
-nav {
-  background-image: url("/images/main-logo.svg");
+.border-button {
+  border-color: #97bfa2;
+}
+
+.rounded-img {
+  border-top-left-radius: 2em;
+  border-top-right-radius: 2em;
+}
+
+.rounded-storetext {
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 2em;
+}
+
+.rounded-all {
+  border-radius: 2em;
+}
+
+.text-description {
+  color: #969696;
+}
+
+input {
+  font-family: "Oxygen", sans-serif;
 }
 /*# sourceMappingURL=app.css.map */
