@@ -24,10 +24,10 @@ class WebhookController extends CashierController
     // this updates the subscription database entry from cancelled to renew
     public function handleCustomerSubscriptionCreated($payload)
     {
-        // Find the user
+        // grab the user
         if ($user = $this->getUserByStripeId($payload['data']['object']['customer'])) {
             $data = $payload['data']['object'];
-            // Find the user's subscription
+            // grab user's subscription
             $user->subscriptions->first(function (Subscription $subscription) use ($data) {
 
                 $plans = [
@@ -71,6 +71,7 @@ class WebhookController extends CashierController
         return $this->successMethod();
     }
 
+    // after 1st attempt, notify user
     public function handleInvoicePaymentFailed($payload)
     {
         if ($user = $this->getUserByStripeId($payload['data']['object']['customer'])) {

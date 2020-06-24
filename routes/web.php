@@ -19,7 +19,8 @@ Route::middleware('auth')->group(function () {
     Route::apiResource('subscribe', 'SubscribeController')->except(['show', 'update', 'destroy']);
 });
 
-Route::post('stripe/webhook', '\App\Http\Controllers\WebhookController@handleWebhook');
+Route::post('stripe/webhook', 'WebhookController@handleWebhook');
+
 
 /*
 Admin/Manager Actions -
