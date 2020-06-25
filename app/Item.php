@@ -8,8 +8,6 @@ use Laravel\Scout\Searchable;
 class Item extends Model
 {
 
-    use Searchable;
-
     protected $fillable = ['name', 'description', 'price', 'image', 'limit'];
 
     protected $touches = ['store'];

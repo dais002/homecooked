@@ -87,4 +87,9 @@ h6 {
 input {
   font-family: "Oxygen", sans-serif;
 }
+
+.flex-basis {
+  -ms-flex-preferred-size: 384px;
+      flex-basis: 384px;
+}
 /*# sourceMappingURL=app.css.map */

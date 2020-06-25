@@ -17975,6 +17975,10 @@ input {
   font-family: "Oxygen", sans-serif;
 }
 
+.flex-basis {
+  flex-basis: 384px;
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

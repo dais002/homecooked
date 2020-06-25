@@ -25,9 +25,6 @@ class SubscribeController extends Controller
         $user->newSubscription('primary', $planId)
             ->create($paymentMethod);
 
-        return 'success!';
-
-        // route isnt redirecting probably due to API call?
-        return redirect()->route('stores.create')->with('success', 'Subscription received. Proceed to creating your store!');
+        return 'success';
     }
 }

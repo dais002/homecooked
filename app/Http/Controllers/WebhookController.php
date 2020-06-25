@@ -21,7 +21,7 @@ class WebhookController extends CashierController
         return $this->successMethod();
     }
 
-    // this updates the subscription database entry from cancelled to renew
+    // updates the subscription database entry from cancelled to renew
     public function handleCustomerSubscriptionCreated($payload)
     {
         // grab the user

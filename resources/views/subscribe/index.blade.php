@@ -82,7 +82,7 @@
           axios.post('subscribe', {
             payment_method: setupIntent.payment_method,
             plan: 'standard',
-          }).then(res => console.log(res, 'axios post success')).catch(err => console.log('error', err))
+          }).then(res => console.log(res, 'axios post success')).then(res => window.location.replace('http://localhost:8000/stores/create')).catch(err => console.log('error', err))
         }
       })
     })
