@@ -13,6 +13,7 @@ class StoreItemController extends Controller
     {
         $this->authorize('addItem', $store);
         $store->items()->create($request->validated());
+
         return view('stores.show', [
             'store' => $store,
         ]);

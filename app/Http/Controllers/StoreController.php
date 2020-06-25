@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRequest;
+use App\Item;
 use App\Store;
+use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $stores = Store::paginate(15);
+        $stores = Store::search($request->search)->get();
 
         return view('stores.index', [
             'stores' => $stores,

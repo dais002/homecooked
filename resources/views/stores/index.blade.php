@@ -22,7 +22,7 @@
         <div class="h-40 p-4 flex flex-col justify-between bg-storecard rounded-storetext">
           <a href="{{ route('stores.show', $store->id) }}">
             <h2 class="font-bold mb-2">{{ $store->name }}</h2>
-            <p class="font-oxygen text-md">{{ $store->description }}</p>
+            <p class="font-oxygen text-sm">{{ $store->description }}</p>
           </a>
           <div class="flex justify-between items-center">
             <p>Los Angeles, CA</p>
@@ -42,9 +42,6 @@
       </div>
       @endforeach
 
-    </div>
-    <div>
-      {{ $stores->links() }}
     </div>
 
   </div>
