@@ -11,10 +11,10 @@
       </div>
       @endif
     </div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-2 xlg:grid-cols-3 gap-4 md:gap-12 xlg:gap-8 rounded-lg justify-center pb-12">
+    <div class="flex flex-wrap justify-center xlg:justify-between -mx-10 xlg:-mx-4 mb-4 rounded-lg pb-12">
 
       @foreach ($stores as $store)
-      <div>
+      <div class="flex-basis px-4 mb-8">
         <a href="{{ route('stores.show', $store->id) }}">
           <img src="{{ $store->logo }}" alt="store-logo" class="object-fit h-64 w-full rounded-img">
         </a>

@@ -21,18 +21,4 @@ Route::middleware('auth')->group(function () {
 
 Route::post('stripe/webhook', 'WebhookController@handleWebhook');
 
-
-/*
-Admin/Manager Actions -
-Store - show all stores, show a single store, delete a store (admin role)
-StoresItems - create item, store item, edit item, update item, delete item (manager role)
-RolesUsers - assign role to user, update role to user (when user upgrades to paid package)
-
-Customer Actions -
-CartsItems - show all cart items, add to cart, update cart (customer), remove item from cart
-Orders - complete the purchase (customer)
-*/
-
-
-
 Auth::routes();

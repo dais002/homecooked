@@ -27,25 +27,25 @@
     @forelse ($store->items as $item)
     <div class="flex flex-col lg:flex-row justify-between bg-white mb-6 rounded-all p-6">
 
-      <div class="flex w-full lg:w-3/4">
+      <div class="flex flex-col-reverse md:flex-row w-full lg:w-3/4">
         <div class="flex-none">
           <img src="{{ $item->image }}" alt="item-img" class="mx-auto rounded-all" style="width: 200px; height: 200px;">
         </div>
-        <div class="ml-2 lg:ml-4 p-2 flex flex-col justify-between">
-          <div>
+        <div class="md:ml-2 lg:ml-4 p-2 flex flex-col justify-between">
+          <div class="mb-4 md:mb-0 text-center md:text-left">
             <p class="font-bold text-2xl lg:text-3xl">{{ $item->name }}</p>
             <p class="font-oxygen text-sm md:text-md lg:text-lg">{{ $item->description }}</p>
           </div>
           @can('update', $item)
-          <div class="flex text-center">
-            <button class="px-2 py-1 lg:px-4 lg:py-2 bg-gray-500 hover:bg-gray-700 text-white text-sm lg:text-lg rounded-lg mr-2 lg:mr-6 tracking-wider">
+          <div class="flex text-center justify-center md:justify-start">
+            <button class="px-2 py-1 lg:px-4 lg:py-2 bg-gray-500 hover:bg-gray-700 text-white text-sm lg:text-lg rounded-lg mr-4 md:mr-2 lg:mr-6 tracking-wider">
               <a href="{{ route('stores.items.edit', ['store' => $store, 'item' => $item]) }}">Edit Item</a>
             </button>
             <div>
               <form action="{{ route('stores.items.destroy', ['store' => $store->id, 'item' => $item->id]) }}" method="POST" class="text-center">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="px-2 py-1 lg:px-4 lg:py-2 bg-danger text-white text-sm lg:text-lg mr-6 tracking-wider hover:bg-red-700">Delete Item</button>
+                <button type="submit" class="px-2 py-1 lg:px-4 lg:py-2 bg-danger text-white text-sm lg:text-lg md:mr-6 tracking-wider hover:bg-red-700">Delete Item</button>
               </form>
             </div>
           </div>
@@ -71,6 +71,12 @@
               </select>
             </div>
             <button type="submit" class="px-4 py-2 bg-btn-green rounded-lg text-white text-lg hover:bg-blue-700">Add to Cart</button>
+            <x-modal submit-label="Ok">
+              <x-slot name="trigger">
+                <button hidden @click="on = true" id="add-to-cart-modal" type="submit" class="px-4 py-2 bg-btn-green rounded-lg text-white text-lg hover:bg-blue-700">Add to Cart</button>
+              </x-slot>
+              Success! Item added to cart!
+            </x-modal>
           </form>
 
         </div>

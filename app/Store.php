@@ -12,11 +12,6 @@ class Store extends Model
 
     protected $fillable = ['name', 'description', 'logo'];
 
-    // public function searchableAs()
-    // {
-    //     return config('scout.prefix') . 'store';
-    // }
-
     public function toSearchableArray()
     {
         $this->items;
@@ -26,16 +21,8 @@ class Store extends Model
         // Applies Scout Extended default transformations:
         $array = $this->transform($array);
 
-        // Add an extra attribute:
-        // $array['item_name'] = $this->items->name
-
         return $array;
     }
-
-    // public function shouldBeSearchable()
-    // {
-    //     return $this->isPublished();
-    // }
 
     public function users()
     {

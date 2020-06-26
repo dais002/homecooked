@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Events\AddToCart;
 use App\Http\Requests\CartItemRequest;
 use App\Item;
 
@@ -13,6 +14,7 @@ class CartItemController extends Controller
     {
         $request->validated();
         $quantity = $request->quantity;
+        $user = auth()->user();
 
         $hasItem = $cart->items->contains($item->id);
 
@@ -37,6 +39,9 @@ class CartItemController extends Controller
 
             // create new cart-item
             $cart->items()->attach($item, ['quantity' => $quantity]);
+
+            // pusher notification
+            event(new AddToCart($user, $item));
         }
 
         return back();

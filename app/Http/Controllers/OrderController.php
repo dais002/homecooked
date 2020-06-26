@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Events\OrderComplete;
 use App\Order;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,9 @@ class OrderController extends Controller
             'address_id' => 1,
             'phone_number_id' => 1,
         ]);
+
+        // pusher notification
+        event(new OrderComplete());
 
         return redirect()->route('order.index');
     }

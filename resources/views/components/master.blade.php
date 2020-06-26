@@ -14,6 +14,7 @@
   <script src="http://unpkg.com/turbolinks" defer></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
   <script src="https://js.stripe.com/v3/" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
 
@@ -26,17 +27,22 @@
   <!-- Pusher -->
   <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
   <script>
-    // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
 
-    var pusher = new Pusher('de32b37e51c1f416a880', {
+    let pusher = new Pusher('{{env("PUSHER_APP_KEY")}}', {
       cluster: 'us3'
     });
 
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      alert(JSON.stringify(data));
+    let channel = pusher.subscribe('my-channel');
+    channel.bind('add-to-cart', (data) => {
+      // fire off modal message
+      document.getElementById('add-to-cart-modal').click();
     });
+
+    channel.bind('order-complete', (data) => {
+      alert(data.message);
+      window.location.replace('http://localhost:8000/stores');
+    })
   </script>
 
 </head>

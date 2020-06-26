@@ -10,8 +10,11 @@
     </div>
   </div>
   <div class="flex items-center">
-
+    @if (auth()->user()->stores->isEmpty())
     <a class="mr-6 border-b-4 border-solid hover:text-white hover:border-blue-700" href="{{ route('subscribe.index') }}" data-turbolinks="false">SHARE YOUR CREATION</a>
+    @else
+    <a class="mr-6 border-b-4 border-solid hover:text-white hover:border-blue-700" href="{{ route('stores.show', auth()->user()->stores->first()) }}" data-turbolinks="false">MANAGE YOUR STORE</a>
+    @endif
 
     <form action="/logout" method="POST">
       @csrf
