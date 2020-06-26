@@ -8,3 +8,4 @@ Tech Stack / 3rd Party Features -
 - Algolia implementation for dynamic search indexing
 - Pusher for real-time notifications handling
 - Redis for caching
+- TailwindCSS for front-end responsive views
