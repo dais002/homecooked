@@ -1,4 +1,6 @@
-### A subscription based e-commerce platform to for home chefs to share their creations.
+## GET HOME COOKED
+
+### Subscription based e-commerce platform for home chefs to share their creations.
 
 - Built in Laravel(PHP) / MySQL database
 - Integrated Stripe API for payment processing and webhooks
