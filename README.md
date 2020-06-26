@@ -1,9 +1,9 @@
-## A subscription based e-commerce platform to allow home-chefs to manage orders and sell their foods.
+### A subscription based e-commerce platform for home chefs to share their creations.
 
-# Tech Stack
+### Tech Stack
 - Laravel(PHP)
 - MySQL
-- Stripe API for payment processing
+- Stripe API for payment processing and webhooks
 - Algolia for dynamic search indexing
-- Pusher for notifications handling (removed)
+- Pusher for notifications handling
 - Redis for caching
