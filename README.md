@@ -2,9 +2,9 @@
 
 ### Subscription based e-commerce platform for home chefs to share their creations.
 
-- Built in Laravel(PHP) / MySQL database
-- Integrated Stripe API for payment processing and webhooks
-- Implemented Algolia for dynamic search indexing
-- Added Pusher for real-time notifications handling
-- Utilized Redis for caching
-
+Tech / 3rd Party Features -
+- Built with Laravel (PHP) tied to MySQL database
+- Stripe API integration for payment processing and webhooks
+- Algolia implementation for dynamic search indexing
+- Pusher for real-time notifications handling
+- Redis for caching
