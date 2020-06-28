@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html {
+.font-body {
   font-family: "Oswald", sans-serif;
 }
 
@@ -33,8 +33,19 @@ h6 {
   color: #f3f3f3;
 }
 
-.bg-nav {
+.bg-darkblue,
+.hover\:bg-darkblue:hover {
   background-color: #3d3f5d;
+}
+
+.text-darkblue,
+.hover\:text-darkblue:hover {
+  color: #3d3f5d;
+}
+
+.border-darkblue,
+.hover\:border-darkblue:hover {
+  border-color: #3d3f5d;
 }
 
 .bg-btn-green {
@@ -62,7 +73,8 @@ h6 {
   border-radius: 6px;
 }
 
-.border-button {
+.border-nav,
+.hover\:border-nav:hover {
   border-color: #97bfa2;
 }
 
@@ -91,5 +103,13 @@ input {
 .flex-basis {
   -ms-flex-preferred-size: 384px;
       flex-basis: 384px;
+}
+
+.min-w-350 {
+  min-width: 350px;
+}
+
+*:focus {
+  outline: none !important;
 }
 /*# sourceMappingURL=app.css.map */

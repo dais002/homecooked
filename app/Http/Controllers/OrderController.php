@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
-use App\Events\OrderComplete;
+use App\Mail\ChefConfirm;
+use App\Mail\CustomerConfirm;
 use App\Order;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -17,7 +18,7 @@ class OrderController extends Controller
 
     public function store()
     {
-
+        $user = auth()->user();
         $attributes = request()->validate([
             'cart' => 'required|integer|exists:carts,id',
         ]);
@@ -28,8 +29,14 @@ class OrderController extends Controller
             'phone_number_id' => 1,
         ]);
 
-        // pusher notification
-        event(new OrderComplete());
+        // send email to the store owners
+        $cart = Cart::find($attributes['cart'])
+            ->items->each(function ($item) {
+                Mail::to($item->store->users->first()->email)->send(new ChefConfirm($item, $user));
+            });
+
+        // send email to user
+        Mail::to(auth()->user()->email)->send(new CustomerConfirm());
 
         return redirect()->route('order.index');
     }

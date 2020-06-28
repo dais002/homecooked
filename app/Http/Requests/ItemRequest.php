@@ -27,7 +27,7 @@ class ItemRequest extends FormRequest
             'name' => 'max:255|string|required',
             'description' => 'string|max:255',
             'price' => 'integer|required',
-            'image' => 'string|max:255',
+            'image' => 'file',
             'limit' => 'integer|required',
         ];
     }

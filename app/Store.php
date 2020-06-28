@@ -26,7 +26,7 @@ class Store extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 
     public function assignUserToStore($user)
@@ -48,4 +48,13 @@ class Store extends Model
     {
         return $this->morphOne(PhoneNumber::class, 'owner');
     }
+
+    // public function getLogoAttribute($link)
+    // {
+    //     if ($link) {
+    //         return asset('storage/' . $link);
+    //     } else {
+    //         return 'https://lorempixel.com/360/280/?39851';
+    //     }
+    // }
 }

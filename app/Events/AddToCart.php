@@ -25,8 +25,8 @@ class AddToCart implements ShouldBroadcast
     public function __construct($item)
     {
         $this->item = $item;
-        $this->title = 'Item Added!';
-        $this->message = "Added {$item->name} to the cart.";
+        $this->title = 'Item Added';
+        $this->message = "Added {$item->name} to cart event!";
     }
 
     /**
@@ -36,7 +36,7 @@ class AddToCart implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['my-channel'];
+        return ['channel'];
     }
 
     public function broadcastAs()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Subscribed;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Billable;
 
@@ -22,7 +23,7 @@ class SubscribeController extends Controller
 
         $planId = 'price_1GwCl5IOPhNaXwPAjftecbYZ';
 
-        $user->newSubscription('primary', $planId)
+        $user->newSubscription('standard', $planId)
             ->create($paymentMethod);
 
         return 'success';

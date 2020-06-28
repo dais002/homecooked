@@ -1,4 +1,4 @@
-<x-app>
+<x-master>
     <div class="flex flex-col items-center mx-auto bg-white">
         <div class="bg-btn-green p-12 mt-20 mb-40  max-w-screen-sm rounded-all">
             <div class="">
@@ -7,7 +7,7 @@
             <div class="mx-auto px-12 py-8 rounded-all border border-white bg-storecard tracking-wider max-w-sm">
 
                 <div class="flex justify-center font-bold tracking-widest text-center">
-                    <div class="text-center text-2xl border-b-8 border-button">&nbsp;CREATE ACCOUNT&nbsp;</div>
+                    <div class="text-center text-2xl border-b-8 border-nav">CREATE ACCOUNT</div>
                 </div>
 
                 <form method="POST" action="{{ route('register') }}">
@@ -65,9 +65,10 @@
                         <button type="submit" class="bg-blue-700 text-white rounded py-2 px-4 hover:bg-blue-500 mr-2 tracking-wider">
                             {{ __('Register') }}
                         </button>
+                        <a href="{{ route('welcome') }}" class="text-xs text-gray-700 tracking-normal font-oxygen">Cancel</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</x-app>
+</x-master>

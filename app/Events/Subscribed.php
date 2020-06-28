@@ -10,19 +10,22 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderComplete implements ShouldBroadcast
+class Subscribed implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public $user;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        $this->title = 'Order Complete';
-        $this->message = 'Your order has been placed! Thank you for supporting your local home chefs!';
+        $this->user = $user;
+        $this->title = 'New Subscription';
+        $this->message = "{$user->name} has subscribed!";
     }
 
     /**
@@ -32,11 +35,11 @@ class OrderComplete implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['my-channel'];
+        return ['channel'];
     }
 
     public function broadcastAs()
     {
-        return 'order-complete';
+        return 'subscribed';
     }
 }

@@ -10,21 +10,13 @@ class StorePolicy
 {
     use HandlesAuthorization;
 
-    public function before(User $user)
-    {
-        if ($user->role === 'manager') {
-            return true;
-        }
-    }
-
     public function addItem(User $user, Store $store)
     {
-        return $user->stores->contains($store);
+        return $user->stores->contains($store) || $user->role === 'manager';
     }
 
     public function addStore(User $user)
     {
-        // refactor - basically want to say subscribed, and doesn't already have a store.
-        return $user->subscribed('primary') && $user->stores->first() !== null;
+        return $user->subscribed('standard') && $user->stores->count() < 1;
     }
 }
