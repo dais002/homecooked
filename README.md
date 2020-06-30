@@ -9,3 +9,5 @@ Tech Stack / 3rd Party Features -
 - Pusher for real-time notifications handling
 - Redis for caching database queries
 - TailwindCSS for front-end responsive views
+
+Database migrations removed as application has not yet been deployed.
