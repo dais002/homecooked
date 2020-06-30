@@ -1,10 +1,9 @@
+/database
 /node_modules
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
-/notes
-/database
 .env
 .env.backup
 .phpunit.result.cache
