@@ -22,10 +22,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // used to pull most recent cart that's not a completed order
+    // pull most recent cart that's not a completed order
     public function getCartAttribute()
     {
-        // return $this->carts()->firstOrCreate([]);
         $cart = $this->carts()->whereNotIn('id', Order::all()->pluck('id'))->first();
         if (!$cart) {
             $cart = $this->carts()->create();

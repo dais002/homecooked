@@ -26,7 +26,6 @@
 
   <!-- Pusher -->
   <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
-
 </head>
 
 <body class="font-body">

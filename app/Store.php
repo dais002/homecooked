@@ -49,6 +49,7 @@ class Store extends Model
         return $this->morphOne(PhoneNumber::class, 'owner');
     }
 
+    // storing logo's locally
     // public function getLogoAttribute($link)
     // {
     //     if ($link) {
