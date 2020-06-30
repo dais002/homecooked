@@ -1,7 +1,2 @@
-
-*
-*/
 *.sqlite
 *.sqlite-journal
-!.gitignore
-
