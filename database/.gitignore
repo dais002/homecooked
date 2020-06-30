@@ -1,2 +1,7 @@
+
+*
 *.sqlite
 *.sqlite-journal
+*/
+!.gitignore
+
