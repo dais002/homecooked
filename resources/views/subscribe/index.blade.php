@@ -3,7 +3,7 @@
     <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3 rounded overflow-hidden shadow-lg rounded-all mx-auto bg-storecard p-6">
       <div class="px-6 py-4">
         <div class="text-center flex flex-col justify-between font-bold">
-          <h1 class="tracking-widest font-black border-b-8 border-button">HOME-CHEF PROGRAM</h1>
+          <h1 class="tracking-widest font-black border-b-8 border-nav">HOME-CHEF PROGRAM</h1>
           <h3 class="tracking-wide py-2 font-oxygen">Begin sharing your home creations!</h3>
           <h3 class="tracking-wide py-1 font-oxygen">Special Starter Package</h3>
 
@@ -28,15 +28,20 @@
             <!-- Used to display form errors. -->
             <div id="card-errors" role="alert" class="mb-4"></div>
             <div>
-              <button type="submit" id="card-button" data-secret="{{ $intent->client_secret }}" class="bg-blue-700 text-white rounded py-2 px-4 hover:bg-blue-500 mr-4 tracking-wider">Add Payment</button>
+              <button type="submit" id="card-button" data-secret="{{ $intent->client_secret }}" class="bg-darkblue text-white rounded py-2 px-4 hover:bg-blue-700 mr-4 tracking-wider">Add Payment</button>
               <a href="{{ URL::previous() }}" class="hover:underline tracking-wider">Cancel</a>
+              <x-modal submit-label="Ok">
+                <x-slot name="trigger">
+                  <button hidden @click="on = true" id="subscribed-modal"></button>
+                </x-slot>
+                Subscribed! Proceed to creating your store.
+              </x-modal>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 
   <script>
     console.log('script ran');
@@ -80,9 +85,15 @@
           console.log('card verification success', setupIntent.payment_method);
 
           axios.post('subscribe', {
-            payment_method: setupIntent.payment_method,
-            plan: 'standard',
-          }).then(res => console.log(res, 'axios post success')).then(res => window.location.replace('http://localhost:8000/stores/create')).catch(err => console.log('error', err))
+              payment_method: setupIntent.payment_method,
+              plan: 'standard',
+            })
+            .then(res => {
+              console.log('axios post success');
+              window.location.replace('http://localhost:8000/stores/create');
+              document.getElementById('subscribed-modal').click();
+            })
+            .catch(err => alert('Subscription Unsuccessful.  Please check your payment method.'));
         }
       })
     })

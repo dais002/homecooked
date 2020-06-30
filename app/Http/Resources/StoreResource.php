@@ -20,11 +20,9 @@ class StoreResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'description' => $this->description,
             'logo' => $this->logo,
-            'cuisineType' => $this->cuisineType,
             'items' => ItemResource::collection($this->items)
-            // 'cuisine' => new CuisineResource($this->cuisine)
-            // 'cuisine' => $this->cuisine->type
         ];
     }
 }

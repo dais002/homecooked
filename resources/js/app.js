@@ -1,5 +1,3 @@
-import Echo from "laravel-echo";
-
 window._ = require("lodash");
 
 /**
@@ -31,10 +29,28 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
  * allows your team to easily build robust real-time web applications.
  */
 
-window.Pusher = require("pusher-js");
-window.Echo = new Echo({
-    broadcaster: "pusher",
-    key: process.env.MIX_PUSHER_APP_KEY,
-    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-    forceTLS: true
+// import Echo from "laravel-echo";
+// window.Pusher = require("pusher-js");
+// window.Echo = new Echo({
+//     broadcaster: "pusher",
+//     key: process.env.MIX_PUSHER_APP_KEY,
+//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//     forceTLS: true
+// });
+
+Pusher.logToConsole = true;
+
+let pusher = new Pusher(process.env.MIX_PUSHER_APP_KEY, {
+    cluster: "us3"
+});
+
+let channel = pusher.subscribe("channel");
+
+channel.bind("add-to-cart", data => {
+    document.getElementById("add-to-cart-modal").click();
+});
+
+channel.bind("subscribed", data => {
+    // document.getElementById("subscribed-modal").click();
+    alert(data.message);
 });

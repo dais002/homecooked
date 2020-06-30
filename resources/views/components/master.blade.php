@@ -26,24 +26,6 @@
 
   <!-- Pusher -->
   <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
-  <script>
-    Pusher.logToConsole = true;
-
-    let pusher = new Pusher('{{env("PUSHER_APP_KEY")}}', {
-      cluster: 'us3'
-    });
-
-    let channel = pusher.subscribe('my-channel');
-    channel.bind('add-to-cart', (data) => {
-      // fire off modal message
-      document.getElementById('add-to-cart-modal').click();
-    });
-
-    channel.bind('order-complete', (data) => {
-      alert(data.message);
-      window.location.replace('http://localhost:8000/stores');
-    })
-  </script>
 
 </head>
 
@@ -54,12 +36,11 @@
       @if (auth()->check())
       @include ('_navbar')
       @endif
-
     </header>
+
     {{ $slot }}
 
-
-    <footer class="container mx-auto max-w-screen-xlg bg-nav">
+    <footer class="container mx-auto max-w-screen-xlg bg-darkblue">
       @if (auth()->check())
       <div class="flex justify-center items-center">
         <a href="{{ route('stores.index') }}">

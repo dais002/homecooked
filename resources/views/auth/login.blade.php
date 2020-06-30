@@ -1,4 +1,4 @@
-<x-app>
+<x-master>
     <div class="flex flex-col items-center mx-auto bg-white">
         <div class="bg-btn-green p-12 mt-20 mb-40  max-w-screen-sm rounded-all">
             <div class="">
@@ -7,7 +7,7 @@
             <div class="mx-auto px-12 py-8 rounded-all border border-white bg-storecard tracking-wider max-w-sm">
 
                 <div class="flex justify-center font-bold tracking-widest text-center">
-                    <div class="text-center text-2xl border-b-8 border-button">{{ __('LOGIN') }}</div>
+                    <div class="text-center text-2xl border-b-8 border-nav">{{ __('LOGIN') }}</div>
                 </div>
 
                 <form method="POST" action="{{ route('login') }}">
@@ -61,4 +61,4 @@
             </div>
         </div>
     </div>
-</x-app>
+</x-master>

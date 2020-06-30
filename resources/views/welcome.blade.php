@@ -5,18 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Get Home Cooked!</title>
-
-    <!-- Fonts -->
-
 
     <!-- Styles -->
     <style>
         html,
         body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Nunito', sans-serif;
             font-weight: 200;
             height: 100vh;
             margin: 0;
@@ -36,12 +29,6 @@
             position: relative;
         }
 
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
         .content {
             text-align: center;
         }
@@ -50,35 +37,35 @@
             font-size: 84px;
         }
 
-        .links>a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
+        img {
+            width: 400px;
+            height: 300px;
         }
 
         .m-b-md {
             margin-bottom: 30px;
         }
     </style>
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <title>Get Home Cooked!</title>
 </head>
 
 <body>
-    <div class="flex-center position-ref full-height">
+    <div class="flex-center position-ref full-height bg-btn-green">
         <div class="content">
-            <div class="title m-b-md">
-                getHomeCooked
+            <div class="title m-b-md mx-auto flex items-center justify-center">
+                <img src="/images/logo.svg" alt="logo">
             </div>
 
-            <div class="links">
+            <div class="font-oxygen text-white text-3xl flex justify-around font-bold">
                 @auth
-                <a href="{{ url('/stores') }}">Home</a>
+                <a href="{{ url('/stores') }}" class="border-b-4 border-transparent hover:border-white hover:border-double">Go to Stores</a>
                 @else
-                <a href="{{ route('login') }}">Login</a>
-                <a href="{{ route('register') }}">Register</a>
+                <a href="{{ route('login') }}" class="border-b-4 border-transparent hover:border-white hover:border-double">Login</a>
+                <a href="{{ route('register') }}" class="border-b-4 border-transparent hover:border-white hover:border-double">Register</a>
                 @endauth
             </div>
         </div>

@@ -33,17 +33,13 @@ class CartItemController extends Controller
                 $cart->items()->updateExistingPivot($item, ['quantity' => $quantity]);
             }
         } else {
-            // update item limit on items table
             $item->limit -= $quantity;
             $item->save();
 
-            // create new cart-item
             $cart->items()->attach($item, ['quantity' => $quantity]);
 
-            // pusher notification
-            event(new AddToCart($user, $item));
+            event(new AddToCart($item));
         }
-
         return back();
     }
 }
