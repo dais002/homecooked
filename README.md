@@ -10,4 +10,4 @@ Tech Stack / 3rd Party Features -
 - Redis for caching database queries
 - TailwindCSS for front-end responsive views
 
-Database migrations removed as application has not yet been deployed.
+Note - database migrations hidden for application has not yet been deployed.
