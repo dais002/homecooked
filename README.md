@@ -1,4 +1,4 @@
-## GET HOME COOKED
+## HOMECOOKED
 
 ### Subscription based e-commerce platform for home chefs to share their creations.
 
