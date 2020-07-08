@@ -1,6 +1,7 @@
 <x-app>
   <div class="flex flex-col items-center my-12 font-oxygen font-bold">
     <h1 class="mb-6">Order processed!</h1>
+    <h1 class="mb-6">Please check your email {{auth()->user()->email}} for confirmation.</h1>
     <h1>Thank you for your support.</h1>
   </div>
 
