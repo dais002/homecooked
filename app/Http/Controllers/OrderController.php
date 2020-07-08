@@ -18,7 +18,6 @@ class OrderController extends Controller
 
     public function store()
     {
-        $user = auth()->user();
         $attributes = request()->validate([
             'cart' => 'required|integer|exists:carts,id',
         ]);
@@ -30,9 +29,9 @@ class OrderController extends Controller
         ]);
 
         // send email to the store owners
-        $cart = Cart::find($attributes['cart'])
+        Cart::find($attributes['cart'])
             ->items->each(function ($item) {
-                Mail::to($item->store->users->first()->email)->send(new ChefConfirm($item, $user));
+                Mail::to($item->store->users->first()->email)->send(new ChefConfirm($item, auth()->user()));
             });
 
         // send email to user
