@@ -23,6 +23,8 @@ class CreateCartItemTable extends Migration
                 ->onDelete('cascade');
             $table->integer('quantity');
             $table->timestamps();
+
+            $table->unique(['cart_id', 'item_id']);
         });
     }
 

@@ -22,6 +22,8 @@ class CreateStoreUserTable extends Migration
                 ->constrained()
                 ->onDelete('cascade');
             $table->timestamps();
+
+            $table->unique(['user_id', 'store_id']);
         });
     }
 
