@@ -20,8 +20,7 @@ class CreateAddressesTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('zip_code');
-            $table->string('owner_type')->nullable();
-            $table->integer('owner_id')->nullable();
+            $table->morphs('owner');
             $table->timestamps();
         });
     }

@@ -56,11 +56,11 @@ class User extends Authenticatable
 
     public function address()
     {
-        return $this->morphOne('App\Address', 'owner');
+        return $this->morphMany('App\Address', 'owner');
     }
 
     public function phone_number()
     {
-        return $this->morphOne(PhoneNumber::class, 'owner');
+        return $this->morphMany(PhoneNumber::class, 'owner');
     }
 }
